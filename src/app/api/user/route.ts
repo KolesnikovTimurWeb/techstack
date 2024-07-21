@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server"
 import prisma from "@/lib/prisma"
+// @ts-ignore
 import { hash } from "bcrypt"
 
 export async function POST(req:Request) {
