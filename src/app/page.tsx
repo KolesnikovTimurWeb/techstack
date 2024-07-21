@@ -1,95 +1,73 @@
 import Image from "next/image";
-import styles from "./page.module.css";
+import styles from "@/styles/Main.module.scss"
+import Button from "@/components/ui/Button";
+import MainEmojiMotion from "@/components/MainEmojiMotion";
+import MainEmoji1 from "@/assets/MainEmoji1.png";
+
+
 
 export default function Home() {
+  
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+    <main className={styles.page}>
+        {/* MAIN */}
+        <section className={styles.main}>
+          <div className="container">
+            <div className={styles.main_text}>
+              <h1>Where the joy of learn meets the power of community</h1>
+              <h4>Dive deep in immersive, interactive small groups. Expand horizons, engage in discussions, and elevate your learning journey with us.</h4>
+              <Button link="/sign-in" size="sm" color="white">Sign In</Button>
+            </div>
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+            <div className={styles.main_bg}>
+                <div className={styles.main_bg_circle}>
+                    <MainEmojiMotion index={1} left={-1} top={50} image={MainEmoji1}/>
+                </div>
+                <div className={styles.main_bg_circle}>
+                  <MainEmojiMotion index={2} left={92} top={70} image={MainEmoji1}/>
 
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
+                </div>
+                <div className={styles.main_bg_circle}>
+                <MainEmojiMotion index={3} left={92} top={25} image={MainEmoji1}/>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
+                </div>
+           </div>
+          </div>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
+        </section>
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+      {/* Find your stack */}
+        <section className={styles.find}>
+         <div className="container">
+
+            <div className={styles.find_headline}>
+              <h2>Find your <span>perfect</span> stack</h2>
+            </div>
+            <div className={styles.find_block}>
+              <div className={styles.find_splite_block}>
+                  <div className={styles.find_card}>
+                      <h4>Find your favorite stack</h4>
+                  </div>  
+                  <div className={styles.find_card}>
+                  <h4>Rewiev your expirence with the project</h4>
+
+                  </div>
+              </div>
+              <div className={styles.find_sized_block}>
+                  <div className={styles.find_card}>
+                    <h4>Share your personal projects and stacks</h4>
+
+                  </div>
+                  <div className={styles.find_card}>
+                  <h4>Get people on your project</h4>
+
+                  </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
     </main>
   );
 }
+

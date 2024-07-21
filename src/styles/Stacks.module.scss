@@ -1,0 +1,83 @@
+.stacks{
+   margin-top: 150px;
+   &_card_block{
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      gap: 20px;
+   }
+
+   &_block{
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+   }
+
+
+
+   &_card{
+      display: flex;
+      gap: 5px;
+      flex-direction: column;
+      padding: 16px;
+      background: #171717b5;
+      border-radius: 8px;
+      
+      &_text{
+         display: flex;
+         align-items: center;
+         gap: 5px;
+         img{
+            border-radius: 50%;
+         }
+         h2{
+            font-size: 20px;
+            font-weight: 500;
+         }
+         p{
+            font-size: 14px;
+            font-weight: 200;
+         }
+      }
+
+      &_actions{
+         display: flex;
+         align-items: center;
+         gap: 10px;
+         margin-top: 10px;
+      }
+   }
+
+   &_form{
+      max-width: 400px;
+      padding: 16px;
+      background: #171717b5;
+      border-radius: 8px;
+      
+      display: flex;
+      flex-direction: column;
+      &_input{
+         display: flex;
+         gap: 5px;
+         flex-direction: column;
+         margin-bottom: 15px;
+      }
+      label{
+         font-size: 14px;
+         font-weight: 200;
+      }
+
+      input{
+         background: #292929b5;
+         color: #fff;
+         padding: 8px;
+         border-radius: 8px;
+      }
+
+      button{
+         text-align: center;
+         justify-content: center;
+         font-weight: 600;
+      }
+   }
+}

@@ -1,0 +1,32 @@
+.button{
+   display: flex;
+   font-weight: 500;
+   transition: .2s ease-in-out;
+
+   &:hover{
+      opacity: .8;
+      transition: .2s ease-in-out;
+   }
+}
+.black{
+   background: #000;
+   color: #fff;
+}
+.white{
+   color: #000;
+   background: #fff;
+}
+.sm{
+   padding: 12px 26px;
+   border-radius: 14px;
+}
+.default{
+   padding: 16px 40px;
+   border-radius: 14px;
+}
+.lg{
+   .default{
+      padding: 18px 50px;
+      border-radius: 14px;
+   }
+}
