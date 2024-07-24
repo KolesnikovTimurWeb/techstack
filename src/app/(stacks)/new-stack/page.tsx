@@ -11,6 +11,8 @@ import { useSession } from 'next-auth/react'
 import { ImagesUploader } from '@/components/ImagesUploader'
 import Image from 'next/image'
 import dynamic from 'next/dynamic'
+import {stacks} from "../../../../stacks.js"
+
 const WYSIWYGEditor = dynamic(
    () => import('@/components/MyEditor'),
    { ssr: false }
@@ -21,11 +23,12 @@ const schema = z.object({
    languages:z.any()
 
 })
-
+const stackNames= ["react", 'next']
 
 type StackFields = z.infer<typeof schema>
 
 const NewStack = () => {
+   const [loadedImage, setLoadedImage] = useState(true)
    const {data:session} = useSession()
    const [steps,setSteps] = useState(1)
    const {
@@ -65,7 +68,7 @@ const NewStack = () => {
          })
          console.log(stack)
       }
-      if(steps !== 8){
+      if(steps !== 5){
          setSteps(prev => prev + 1)
       }
    },[steps,selectedCategories])
@@ -106,22 +109,26 @@ const NewStack = () => {
                <div className={styles.new_stack_input}>
 
                <label htmlFor="description">Type your description</label>
-               <Controller
-                  render={({ field }) => <WYSIWYGEditor {...field} />}
-                  name="description"
-                  control={control}
-                  defaultValue=""
-                  rules={{
-                     validate: {
-                     required: (v) =>
-                        (v && stripHtml(v).result.length > 0) ||
-                        "Description is required",
-                     maxLength: (v) =>
-                        (v && stripHtml(v).result.length <= 2000) ||
-                        "Maximum character limit is 2000",
-                     },
-                  }}
-               />
+                  
+               <div className={styles.new_stack_editor}>
+                  <Controller
+                     render={({ field }) => <WYSIWYGEditor {...field} />}
+                     name="description"
+                     control={control}
+                     defaultValue=""
+                     rules={{
+                        validate: {
+                        required: (v) =>
+                           (v && stripHtml(v).result.length > 0) ||
+                           "Description is required",
+                        maxLength: (v) =>
+                           (v && stripHtml(v).result.length <= 2000) ||
+                           "Maximum character limit is 2000",
+                        },
+                     }}
+                  />
+               </div>
+   
                </div>
          
             </div>
@@ -134,6 +141,23 @@ const NewStack = () => {
                   <div onClick={()=>handleCategoryToggle('Categoru')}>Categoru</div>
                   <div onClick={()=>handleCategoryToggle('Categoru2')}>Categoru2</div>
                   <div onClick={()=>handleCategoryToggle('Categoru3')}>Categoru3</div>
+                  {stackNames.map((item) => {
+                     // Check if stacks[item] exists and has an image property
+                     if (stacks[item] && stacks[item].image) {
+                        return (
+                           <Image
+                           key={item}
+                           src={stacks[item].image}
+                           width={20}
+                           height={20}
+                           alt='logo'
+                           />
+                        );
+                     } else {
+                        // Optionally, handle the case where the image does not exist
+                        return null; // or some placeholder image or text
+                     }
+                     })}
                   <span onClick={()=> console.log(selectedCategories)}>CLICKKK</span>
               </div>
       )}
@@ -142,14 +166,28 @@ const NewStack = () => {
                  <h2>Choose your Stack</h2>
                  <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis perferendis possimus accusamus delectus quibusdam laudantium optio provident qui. Eveniet autem dolorum officia nobis repellat! Nobis, et! Repellat quidem facilis deleniti?</h3>
                  {uploadedLogoUrl ? (
-                <div className="mt-2">
-                  <Image
-                    src={uploadedLogoUrl}
-                    alt="logo"
-                    width={1000}
-                    height={1000}
-                    className="rounded-md h-40 w-40 object-cover"
+                <div className={styles.new_stack_images}>
+                    {loadedImage ? null : (
+                     <div
+                        style={{
+                           background: 'red',
+                           height: '400px',
+                           width: '400px'
+                        }}
+                     />
+                     )}
+                     
+                     <Image
+                     style={loadedImage ? {} : { display: 'none' }}
+                     onLoad={() => setLoadedImage(true)}
+                     src={uploadedLogoUrl}
+                     alt="logo"
+                     width={300}
+                     height={300}
+                     className="rounded-md h-40 w-40 object-cover"
                   />
+                  
+             
                 </div>
               ) : (
                
@@ -162,7 +200,14 @@ const NewStack = () => {
                 <span onClick={()=> console.log(uploadedLogoUrl)}>CLICK TO IMAGE</span>
               </div>
       )}
-      <button type='submit'>Next sss</button>
+       {steps === 5 && (
+               <div className={styles.new_stack_block}>
+                 <h2>Choose your Stack</h2>
+                 <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis perferendis possimus accusamus delectus quibusdam laudantium optio provident qui. Eveniet autem dolorum officia nobis repellat! Nobis, et! Repellat quidem facilis deleniti?</h3>
+
+              </div>
+      )}
+      <button className={styles.new_stack_button} type='submit'>Next sss</button>
       </div>
     </form>
   )

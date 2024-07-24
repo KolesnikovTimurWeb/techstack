@@ -120,6 +120,23 @@
          font-weight: 500;
       }
    }
+
+   &_button{
+      background: #fff;
+      color: #000;
+      padding: 12px 18px;
+      font-size: 14px;
+      font-weight: 500;
+      margin-top: 40px;
+      border-radius: 8px;
+   }
+
+   &_editor{
+      height: 500px;
+      background: #fff;
+      border-radius: 12px;
+
+   }
 }
 
 
@@ -161,4 +178,5 @@
 .editor{
    background: #fff;
    color: #000;
+   height: 500px;
 }
