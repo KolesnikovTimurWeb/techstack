@@ -5,13 +5,16 @@ import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { stripHtml } from "string-strip-html";
-import WYSIWYGEditor from '@/components/MyEditor'
 import prisma from '@/lib/prisma'
 import { createStack } from '@/lib/actions'
 import { useSession } from 'next-auth/react'
 import { ImagesUploader } from '@/components/ImagesUploader'
 import Image from 'next/image'
-
+import dynamic from 'next/dynamic'
+const WYSIWYGEditor = dynamic(
+   () => import('@/components/MyEditor'),
+   { ssr: false }
+ )
 const schema = z.object({
    title:z.string().max(60).min(10),
    description:z.string().optional(),

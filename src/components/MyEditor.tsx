@@ -1,15 +1,15 @@
-
-// @ts-ignore
-import { ContentState, convertToRaw, EditorState, Modifier } from "draft-js";
-// @ts-ignore
-
-import draftToHtml from "draftjs-to-html";
-// @ts-ignore
-
-import htmlToDraft from "html-to-draftjs";
 import React, { useEffect, useState } from "react";
-// @ts-ignore
 
+// @ts-ignore
+import { ContentState, convertToRaw, EditorState } from "draft-js";
+
+// @ts-ignore
+import draftToHtml from "draftjs-to-html";
+
+// @ts-ignore
+import htmlToDraft from "html-to-draftjs";
+
+// @ts-ignore
 import { Editor } from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import "@/styles/Editor.scss"
@@ -44,7 +44,6 @@ const WYSIWYGEditor = ({ onChange, value }:{onChange:any, value:any}) => {
   return (
       <div className="editor">
         <Editor
-          spellCheck
           editorState={editorState}
           onEditorStateChange={onEditorStateChange}
         />
