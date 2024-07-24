@@ -49,7 +49,7 @@ const ActionStack = ({stackId,likes,coments}:{stackId:any,likes:any,coments:any}
       <h2>Comments</h2>
         <input type="text" placeholder="Text here" value={commentText} onChange={handleCommentChange}/>
         <button onClick={hadnleAddComment}>Submit</button>
-        {coments.map(item => (
+        {coments.map((item:any) => (
         <div key={item.id}>
         {item.body}
       </div>
