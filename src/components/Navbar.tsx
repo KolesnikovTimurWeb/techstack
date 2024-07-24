@@ -6,8 +6,20 @@ import Image from "next/image"
 import Link from "next/link"
 import Button from "./ui/Button"
 import { motion } from "framer-motion";
+import { getServerSession } from "next-auth"
+import { authOptions } from "@/lib/auth"
+import { getUser } from "@/lib/actions"
+import Menu from "./Menu"
+import { useSession } from "next-auth/react"
 
-const Navbar = () => {
+interface NavbarProps{
+  username?:string,
+  email?:string
+}
+
+const Navbar = ({username,email}:NavbarProps) => {
+  const {data:session} = useSession()
+  username = session?.user.username
   return (
     <header className={styles.navbar}>
         <motion.div 
@@ -23,12 +35,19 @@ const Navbar = () => {
           <div className={styles.navbar_navigation}>
               <Link href={'/stacks'}>Stacks</Link>
               <Link href={'/stacks'}>Community</Link>
-              <Button color="white" size="sm">Sign Up</Button>
+              {username && (
+                <Menu username={username} email={email}/>
+                
+              )}
+                {!username && (
+                    <Button color="white" size="sm">Sign Up</Button>
+              )}
           </div>
         </nav>
         </motion.div>
 
     </header>
+
   )
 }
 

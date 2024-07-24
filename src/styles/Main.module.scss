@@ -125,6 +125,52 @@
    width: 100%;
    padding-top: 20px;
 
+   &_menu{
+      position: relative;
+
+      &_avatar{
+         background: #fff;
+         width: 50px;
+         height: 50px;
+
+         cursor: pointer;
+      }
+
+      &_user{
+         h2{
+            font-size: 14px;
+            font-weight: 500;
+         }
+         p{
+            font-size: 12px;
+            font-weight: 200;
+         }
+
+         margin-bottom: 20px;
+      }
+
+      &_block{
+         position: absolute;
+         left: -200px;
+         background: #171717b5;
+         border-radius: 8px;
+         margin-top: 20px;
+         padding: 10px;
+         width: 200px;
+         a{
+            width: 100%;
+            padding: 12px 0;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+         }
+       a:hover{
+         background: #4d4d4db5;
+         transition: .2s ease-in-out;
+         }
+      }
+   }
+
    &_logo{
       
       display: flex;

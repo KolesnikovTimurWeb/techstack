@@ -3,7 +3,9 @@ import styles from '@/styles/Stacks.module.scss'
 import StacksFilter from '@/components/StacksFilter'
 import StackCard from '@/components/StackCard'
 
-const Stacks = () => {
+
+const Stacks = async () => {
+ 
   return (
       <div className={styles.stacks}>
        <div className="container">

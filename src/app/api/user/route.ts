@@ -26,11 +26,13 @@ export async function POST(req:Request) {
       if(existingUserByUsername){
          return NextResponse.json({user:null, massage:"User with this username already exists"}, {status:409})
       }
+      const hasedPassword = await hash(password,10)
+      
       const newUser =await prisma.user.create({
          data:{
             username,
             email,
-            password
+            password:hasedPassword
          }
       })
       return NextResponse.json({user:newUser , massage:"User create"} , {status:200})

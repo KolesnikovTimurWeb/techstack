@@ -5,8 +5,10 @@ import styles from '@/styles/SignIn.module.scss'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { z } from 'zod'
-import { signIn } from 'next-auth/react'
-import { redirect } from 'next/navigation'
+import { signIn, useSession } from 'next-auth/react'
+import { useRouter } from 'next/navigation'
+import { toast } from 'react-toastify'
+import { ClipLoader } from 'react-spinners'
 
 const schema = z.object({
    email:z.string().email(),
@@ -16,8 +18,18 @@ const schema = z.object({
 type FormFields = z.infer<typeof schema>
 
 const SignIn = () => {
+   const {data:session} = useSession()
+   const router = useRouter()
+   if(session?.user.username){
+      router.push('/')
+      toast.error("You are already logged",{
+         toastId: 'success1',
+     })
+   }
+
    const {register,
       handleSubmit,
+      setError,
       formState:{errors,isSubmitting},
 
    } = useForm<FormFields>({resolver:zodResolver(schema)})
@@ -31,12 +43,15 @@ const SignIn = () => {
             password:data.password,
             redirect:false
          })
+         if(signInData?.status === 401){
+            setError('password', {message:"Wrong password"})
+         }
          if(signInData?.error){
             console.log(signInData.error)
          }else{
-            redirect('/')
+            router.push('/')
+            toast.success("You are succesfully logged In")
          }
-         console.log(signInData)
       }
 
 
@@ -50,14 +65,21 @@ const SignIn = () => {
             <div className={styles.signIn_input}>
                <label htmlFor="email">Email</label>
                <input {...register("email")} type="text" id='email' name='email' placeholder='email' />
-               {errors.email && (<span>{errors.email.message}</span>)}
+               {errors.email && (<span className={styles.signIn_error}>{errors.email.message}</span>)}
 
             </div>
             <div className={styles.signIn_input}>
                <label htmlFor="password">Password</label>
                <input {...register("password")} type="password" id='password' name='password' placeholder='password' />
+               {errors.password && (<span className={styles.signIn_error}>{errors.password.message}</span>)}
+
             </div>
-            <button type='submit'>Sign In</button>
+            <button type='submit' disabled={isSubmitting}>{isSubmitting && (<ClipLoader
+            color={'black'}
+            size={10}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+            />)} Sign In</button>
          </form>
       </div>
     </div>

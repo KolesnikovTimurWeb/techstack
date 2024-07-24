@@ -81,3 +81,84 @@
       }
    }
 }
+
+
+
+.new_stack{
+   margin-top: 150px;
+
+   &_error{
+      color: red;
+      font-size: 14px;
+   }
+   &_input{
+      display: flex;
+      flex-direction: column;
+
+
+   }
+   &_block{
+      h2{
+         font-size: 700px;
+         font-size: 36px;
+         margin-bottom: 10px;
+      }
+      h3{
+         font-weight: 200;
+      }
+
+      label{
+         font-size: 20px;
+         font-weight: 500;
+         margin: 10px 0;
+      }
+
+      input{
+         background: #171717b5;
+         padding: 16px;
+         border-radius: 8px;
+         font-weight: 500;
+      }
+   }
+}
+
+
+.stack{
+   margin-top: 150px;
+
+   &_block{
+      padding: 20px;
+      border-radius: 16px;
+
+      h2{
+         font-weight: 600;
+         font-size: 36px;
+
+         display: flex;
+         flex-direction: column;
+         span{
+            font-size: 12px;
+            font-weight: 200;
+         }
+
+         margin-bottom: 20px;
+      }
+   }
+
+   &_parser{
+      padding: 16px;
+      border-radius: 16px;
+
+      ul{
+      margin-left: 20px;
+
+         list-style: initial;
+      }
+   }
+}
+
+
+.editor{
+   background: #fff;
+   color: #000;
+}

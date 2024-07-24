@@ -14,34 +14,52 @@ datasource db {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
-  email     String   @unique
-  username  String   @unique
-  password  String   @db.Char(60)
-  role      Role     @default(USER)
-  createdAt DateTime @default(now())
+  id        String    @id @default(cuid())
+  email     String    @unique
+  username  String    @unique
+  password  String    @db.Char(60)
+  role      Role      @default(USER)
+  createdAt DateTime  @default(now())
   stacks    Stacks[]
+  Likes     Likes[]
+  Comment   Comment[]
 }
 
 model Stacks {
-  id          Int       @id @default(autoincrement())
+  id          String    @id @default(cuid())
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
   published   Boolean   @default(false)
   title       String    @db.VarChar(255)
   author      User?     @relation(fields: [authorId], references: [id])
-  authorId    Int?
+  authorId    String?
   description String
-  Comment     Comment[]
+  comment     Comment[]
+  languages   String[]
+  likes       Likes[]
+  images      String
+  website     String?
+}
+
+model Likes {
+  id        String   @id @default(cuid())
+  stacksId  String
+  stacks    Stacks   @relation(fields: [stacksId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Comment {
-  id        Int      @id @default(autoincrement())
-  name      String
-  body      String
-  post      Stacks   @relation(fields: [postId], references: [id])
-  postId    Int
-  createdAt DateTime @default(now())
+  id             String   @id @default(cuid())
+  profilePicture String?
+  body           String
+  stacksId       String
+  stacks         Stacks   @relation(fields: [stacksId], references: [id])
+  userId         String
+  user           User     @relation(fields: [userId], references: [id])
+  createdAt      DateTime @default(now())
 }
 
 enum Role {
