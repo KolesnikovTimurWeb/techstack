@@ -24,7 +24,7 @@ const schema = z.object({
 
 type SettingsFields = z.infer<typeof schema>
 
-export const Settings = ({ user }: { user: any }) => {
+const Settings = ({ user }: { user: any }) => {
    const {
       register,
       handleSubmit,
@@ -116,3 +116,4 @@ export const Settings = ({ user }: { user: any }) => {
 }
 
 
+export default Settings
