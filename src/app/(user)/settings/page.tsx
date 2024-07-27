@@ -31,7 +31,7 @@ interface SettingsProps {
    userImage?: string,
 }
 
-const Settings = ({ userDeveloper, userUsername, userEmail, userImage }: SettingsProps) => {
+export default function Settings({ userDeveloper, userUsername, userEmail, userImage }: SettingsProps) {
    const {
       register,
       handleSubmit,
@@ -122,5 +122,3 @@ const Settings = ({ userDeveloper, userUsername, userEmail, userImage }: Setting
    )
 }
 
-
-export default Settings
