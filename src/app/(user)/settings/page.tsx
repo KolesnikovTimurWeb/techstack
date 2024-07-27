@@ -31,7 +31,7 @@ interface SettingsProps {
    userImage?: string,
 }
 
-export default function Settings({ userDeveloper, userUsername, userEmail, userImage }: SettingsProps) {
+export default function SettingsPage({ userDeveloper, userUsername, userEmail, userImage }: SettingsProps) {
    const {
       register,
       handleSubmit,
