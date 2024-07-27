@@ -11,7 +11,7 @@ const layout = async () => {
 
   return (
 
-    <Settings userData={user} />
+    <Settings userDeveloper={user?.developer} userUsername={user?.username} userEmail={user?.email} userImage={user?.image} />
   )
 }
 
