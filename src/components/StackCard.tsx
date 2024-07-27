@@ -28,8 +28,8 @@ const StackCard = ({ title, languages, image, commentLength, likesLength, id, da
             <div>
                <h2>{title}</h2>
                <div className={styles.stacks_card_image}>
-                  {languages.map((stack: string) => (
-                     <StackCardImage image={stack} />
+                  {languages.map((stack: string, index: number) => (
+                     <StackCardImage key={index} image={stack} />
 
                   ))}
                </div>
