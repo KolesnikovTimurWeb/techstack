@@ -4,7 +4,7 @@ import { getServerSession } from "next-auth"
 import { authOptions } from "@/lib/auth"
 import prisma from "@/lib/prisma"
 import { getUser } from "@/lib/actions"
-import SettingsPage from "./page"
+import SettingsPage from "./settings/page"
 
 const layout = async () => {
   const session = await getServerSession(authOptions)
