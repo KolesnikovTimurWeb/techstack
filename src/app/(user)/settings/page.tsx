@@ -25,10 +25,10 @@ const schema = z.object({
 type SettingsFields = z.infer<typeof schema>
 
 interface SettingsProps {
-   userUsername: any,
-   userDeveloper: any,
-   userEmail: any,
-   userImage?: any,
+   userUsername: string,
+   userDeveloper: string,
+   userEmail: string,
+   userImage?: string,
 }
 
 const Settings = ({ userDeveloper, userUsername, userEmail, userImage }: SettingsProps) => {

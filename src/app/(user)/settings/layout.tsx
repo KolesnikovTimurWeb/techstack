@@ -7,7 +7,18 @@ import { getUser } from "@/lib/actions"
 import Settings from "./page"
 
 const layout = async () => {
-  const user = await getUser()
+  const session = await getServerSession(authOptions)
+  // @ts-ignore 
+  const userSessionId = session?.user.userId
+  if (!userSessionId) {
+    return null
+  }
+
+  const user = await prisma.user.findUnique({
+    where: {
+      id: userSessionId
+    }
+  })
 
   return (
 
