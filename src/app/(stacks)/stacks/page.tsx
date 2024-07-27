@@ -41,10 +41,7 @@ const Stacks = async () => {
                 languages={languages}
                 image={images}
                 commentLength={comment.length}
-                likesLength={likes.reduce((acc, like) => {
-                  if (like.userId === userId) return acc + 1
-                  return acc
-                }, 0)}
+                likesLength={likes.length}
                 id={id}
                 key={id}
                 date={createdAt}
