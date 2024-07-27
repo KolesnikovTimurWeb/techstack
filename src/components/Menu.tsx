@@ -2,10 +2,12 @@ import React, { useState } from 'react'
 import styles from "@/styles/Main.module.scss"
 import Link from 'next/link'
 import { signOut, useSession } from 'next-auth/react'
+import Image from 'next/image'
+import avatar from '@/assets/icons/avatar.svg'
 
 interface MenuProps{
    username?:string,
-   email?:string
+   email?:any
  }
 const Menu = ({username, email}:MenuProps) => {
    
@@ -14,7 +16,7 @@ const Menu = ({username, email}:MenuProps) => {
   return (
     <div className={styles.navbar_menu}>
       <div onClick={()=> setMenu(!menu)} className={styles.navbar_menu_avatar}>
-
+         <Image src={avatar} alt='avatar' width={40} height={40}/>
       </div>
       {menu && (
       <div className={styles.navbar_menu_block}>
@@ -26,7 +28,7 @@ const Menu = ({username, email}:MenuProps) => {
          <Link href={'/new-stack'}>
             Create new Stack
          </Link>   
-         <Link href={'/new-stack'}>
+         <Link href={'/settings'}>
             Settings
          </Link>   
          <button onClick={()=> signOut({

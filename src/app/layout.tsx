@@ -9,6 +9,7 @@ import { getServerSession } from "next-auth";
 import { ToastContainer } from "react-toastify";
 import { authOptions } from "@/lib/auth";
 import Provider from "@/components/Provider";
+import "@uploadthing/react/styles.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -31,7 +32,7 @@ export default async function RootLayout({
               {children}
         </Provider>
 
-         <ToastContainer  limit={3}/>
+         <ToastContainer  />
     
       </body>
    

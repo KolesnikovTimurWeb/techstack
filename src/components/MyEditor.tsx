@@ -20,6 +20,7 @@ const WYSIWYGEditor = ({ onChange, value }:{onChange:any, value:any}) => {
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
   const [updated, setUpdated] = useState(false);
 
+  
   useEffect(() => {
     if (!updated) {
       const defaultValue = value ? value : "";

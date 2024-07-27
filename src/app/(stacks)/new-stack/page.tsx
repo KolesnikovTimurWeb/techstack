@@ -12,6 +12,12 @@ import { ImagesUploader } from '@/components/ImagesUploader'
 import Image from 'next/image'
 import dynamic from 'next/dynamic'
 import {stacks} from "../../../../stacks.js"
+import { toast } from 'react-toastify'
+import { link } from 'fs'
+import Link from 'next/link.js'
+import LoaderBars from '@/components/ui/LoaderBars'
+import Spinner from '@/components/ui/Spinner'
+
 
 const WYSIWYGEditor = dynamic(
    () => import('@/components/MyEditor'),
@@ -20,10 +26,13 @@ const WYSIWYGEditor = dynamic(
 const schema = z.object({
    title:z.string().max(60).min(10),
    description:z.string().optional(),
-   languages:z.any()
+   languages:z.any(),
+   website:z.string().min(10).optional()
 
 })
-const stackNames= ["react", 'next']
+const stackNames= [...Object.keys(stacks)]
+
+
 
 type StackFields = z.infer<typeof schema>
 
@@ -54,32 +63,52 @@ const NewStack = () => {
 
    const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
    const onSubmit:SubmitHandler<StackFields> = useCallback(async(data)=>{
-      
-      if(steps === 3){
-         setValue('languages', [...selectedCategories])
+
+      if(steps === 2 ){
+         let desc =  Number(getValues('description')?.length)
+        if(desc < 100){
+         return toast.error("Minimum 100 charters")
+            
+        }
       }
+      console.log(steps)
+      if(steps === 3 && selectedCategories.length < 1){
+         return toast.error("Add languages to your stack")
+
+      }else{
+            setValue('languages', [...selectedCategories])
+      }
+      if(steps === 4 && !uploadedLogoUrl){
+         return toast.error("Add Logo")
+
+      }
+ 
       if(steps ===5){
          const stack = await createStack({
             title:data.title,
             description:data.description,
             languages:data.languages,
             userId:session?.user.id,
-            images:uploadedLogoUrl
+            images:uploadedLogoUrl,
+            website:data.website
          })
-         console.log(stack)
       }
-      if(steps !== 5){
+      if(steps !== 6){
          setSteps(prev => prev + 1)
       }
-   },[steps,selectedCategories])
+   },[steps,selectedCategories,uploadedLogoUrl])
 
-
+   const previousStep= ()=>{
+      if(steps !== 1){
+         setSteps(prev => prev-1)
+      }
+   }
    const handleCategoryToggle = (category: string) => {
       if (selectedCategories.includes(category)) {
         setSelectedCategories((prevCategories) =>
           prevCategories.filter((prevCategory) => prevCategory !== category)
         );
-      } else if (selectedCategories.length < 3) {
+      } else if (selectedCategories.length < 10) {
         setSelectedCategories((prevCategories) => [...prevCategories, category]);
       }
     };
@@ -110,7 +139,8 @@ const NewStack = () => {
 
                <label htmlFor="description">Type your description</label>
                   
-               <div className={styles.new_stack_editor}>
+               <div  className={styles.new_stack_editor}>
+                  <span className={styles.new_stack_editor_loader}><LoaderBars/></span>
                   <Controller
                      render={({ field }) => <WYSIWYGEditor {...field} />}
                      name="description"
@@ -138,27 +168,26 @@ const NewStack = () => {
                  <div className={styles.new_stack_block}>
                  <h2>Choose your Stack</h2>
                  <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis perferendis possimus accusamus delectus quibusdam laudantium optio provident qui. Eveniet autem dolorum officia nobis repellat! Nobis, et! Repellat quidem facilis deleniti?</h3>
-                  <div onClick={()=>handleCategoryToggle('Categoru')}>Categoru</div>
-                  <div onClick={()=>handleCategoryToggle('Categoru2')}>Categoru2</div>
-                  <div onClick={()=>handleCategoryToggle('Categoru3')}>Categoru3</div>
-                  {stackNames.map((item) => {
+                  <div className={styles.new_stack_stacksBlock}>
+                   {stackNames.map((item) => {
                      // Check if stacks[item] exists and has an image property
-                     if (stacks[item] && stacks[item].image) {
                         return (
-                           <Image
+                       <div key={item} className={ selectedCategories.includes(item) ? styles.new_stack_stackButton_active : styles.new_stack_stackButton } onClick={()=>handleCategoryToggle(item)}>
+                          <Image
                            key={item}
-                           src={stacks[item].image}
-                           width={20}
-                           height={20}
+                           src={stacks[item as keyof typeof stacks]?.image}
+                           width={24}
+                           height={24}
                            alt='logo'
                            />
+                           {item}
+                       </div>
+
+                         
                         );
-                     } else {
-                        // Optionally, handle the case where the image does not exist
-                        return null; // or some placeholder image or text
-                     }
                      })}
-                  <span onClick={()=> console.log(selectedCategories)}>CLICKKK</span>
+                  </div>
+           
               </div>
       )}
       {steps ===4 && (
@@ -182,9 +211,9 @@ const NewStack = () => {
                      onLoad={() => setLoadedImage(true)}
                      src={uploadedLogoUrl}
                      alt="logo"
-                     width={300}
-                     height={300}
-                     className="rounded-md h-40 w-40 object-cover"
+                     width={200}
+                     height={200}
+                     className={styles.new_stack_loadedimage}
                   />
                   
              
@@ -196,18 +225,35 @@ const NewStack = () => {
                   onChange={handleLogoUpload}
                 />
               )}
-
-                <span onClick={()=> console.log(uploadedLogoUrl)}>CLICK TO IMAGE</span>
               </div>
       )}
        {steps === 5 && (
                <div className={styles.new_stack_block}>
-                 <h2>Choose your Stack</h2>
-                 <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis perferendis possimus accusamus delectus quibusdam laudantium optio provident qui. Eveniet autem dolorum officia nobis repellat! Nobis, et! Repellat quidem facilis deleniti?</h3>
+                 <h2>Add your website url</h2>
+                 <h3>You can add your main url for your project or github page url</h3>
+               <div className={styles.new_stack_input}>
+                  <input type="url" {...register("website")} id='website' name='website' placeholder='google.com' maxLength={60}/>
 
+                   {errors.website && (<span className={styles.new_stack_error}>{errors.website.message}</span>)}
+
+               </div>
               </div>
       )}
-      <button className={styles.new_stack_button} type='submit'>Next sss</button>
+      {steps === 6 && (
+         <div className={styles.new_stack_congratulation}>
+            <h2>🥳Congratulation your stack is created 🥳  </h2>
+            <Link className={styles.new_stack_button} href={'/stacks'}>Go to stacks</Link>
+         </div>
+      )}
+      {steps === 1 && (
+            <button className={styles.new_stack_button} type='submit'>Next Step</button>
+      )}
+      {steps !== 1 && steps !== 6 && (
+         <div className={styles.new_stack_buttons}>
+            <span className={styles.new_stack_button} onClick={previousStep}>Previous Step</span>
+            <button className={styles.new_stack_button} type='submit'>{isSubmitting && <Spinner/>}Next Step</button>
+         </div>
+      )}
       </div>
     </form>
   )

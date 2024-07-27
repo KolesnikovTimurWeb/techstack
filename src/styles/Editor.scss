@@ -4,9 +4,14 @@
    height: 500px;
    padding: 12px;
    border-radius: 12px;
+   position: relative;
+   z-index: 2;
 }
 
 .dropzone{
+   max-width: 350px;
+   margin: 0 auto;
+   margin-top: 40px;
    display: flex;
    flex-direction: column;
    justify-content: center;
@@ -37,17 +42,100 @@
       font-weight: 500;
       color: #000;
       border-radius: 8px;
+      display: flex;
+       justify-content: center;
+
+      align-items: center;
       &:disabled {
-         opacity: .6;
          pointer-events: none;
+   justify-content: center;
+
        }
        
       svg{
-         display: none;
+         display: flex;
+         width: 20px;
       }
    }
 }
-.rdw-block-wrapper,
-.rdw-fontsize-wrapper{
-   display: none;
+.rdw-editor-wrapper{
+   height: 90%;
 }
+.rdw-editor-main{
+   &::-webkit-scrollbar {
+      width: 5px;
+    }
+    
+    /* Track */
+    &::-webkit-scrollbar-track {
+      background: #f1f1f1; 
+    }
+     
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+      background: #888; 
+    }
+    
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover {
+      background: #555; 
+    }
+}
+
+.rdw-block-wrapper,
+.rdw-link-wrapper,
+.rdw-image-wrapper,
+.rdw-colorpicker-wrapper,
+.rdw-fontfamily-wrapper,
+.rdw-fontsize-wrapper,
+.rdw-block-wrapper,
+.rdw-emoji-wrapper,
+.rdw-embedded-wrapper,
+.rdw-fontsize-wrapper{
+   display: none !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+.custom-class {
+   background-color: none;
+ }
+  
+ /* applied to button */
+ .custom-class > *[data-ut-element="button"] {
+   font-size: 1rem;
+   color:#fff;
+   margin-top: 5px;
+
+   font-weight: 500;
+   background-color: rgb(68, 114, 239);
+ }
+  
+ .custom-class > *[data-ut-element="button"][data-state="ready"] {
+   background-color: rgb(68, 114, 239);
+
+   color:#fff;
+
+ }
+ .custom-class > *[data-ut-element="button"][data-state="readying"] {
+   background-color: rgb(68, 114, 239);
+   color:#fff;
+
+ }
+  
+ /* applied to the button when uploading */
+ .custom-class > *[data-ut-element="button"][data-state="uploading"] {
+   background-color: rgb(68, 114, 239);
+
+   color:#fff;
+   cursor: not-allowed;
+ }
+  

@@ -5,5 +5,3 @@ export function relativeDate(from: Date) {
    return formatDistanceToNowStrict(from, { addSuffix: true });
  }
 
-
- 

@@ -5,6 +5,7 @@
       justify-content: space-between;
       flex-direction: column;
       gap: 20px;
+      width: 100%;
    }
 
    &_block{
@@ -22,7 +23,17 @@
       padding: 16px;
       background: #171717b5;
       border-radius: 8px;
-      
+      color: #fff;
+      position: relative;
+   
+      &_image{
+         display: flex;
+         align-items: center;
+         margin-top: 20px;
+         img{
+            margin-right: -10px;
+         }
+      }
       &_text{
          display: flex;
          align-items: center;
@@ -32,7 +43,8 @@
          }
          h2{
             font-size: 20px;
-            font-weight: 500;
+            font-weight: 600;
+            text-transform: capitalize;
          }
          p{
             font-size: 14px;
@@ -43,8 +55,22 @@
       &_actions{
          display: flex;
          align-items: center;
-         gap: 10px;
-         margin-top: 10px;
+         gap: 20px;
+         margin-top: 20px;
+         p{
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 16px;
+         }
+      }
+
+      &_date{
+         position: absolute;
+         right: 20px;
+         bottom: 20px;
+         font-weight: 500;
+         font-size: 14px;
       }
    }
 
@@ -94,7 +120,7 @@
    &_input{
       display: flex;
       flex-direction: column;
-
+      margin-top: 40px;
 
    }
    &_block{
@@ -120,9 +146,60 @@
          font-weight: 500;
       }
    }
+   &_stacksBlock{
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px,1fr));
+      gap: 10px;
 
+      margin-top: 20px;
+   }
+   &_stackButton{
+      background: #292929b5;
+      padding: 16px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 400;
+      justify-content: center;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      color: #fff;
+      text-transform: capitalize;
+      transition: .2 ease-in-out;
+      cursor: pointer;
+
+      &_active{
+         background: #171717b5;
+         padding: 16px;
+         border-radius: 12px;
+         font-size: 16px;
+         font-weight: 400;
+         justify-content: center;
+         display: flex;
+         align-items: center;
+         cursor: pointer;
+      text-transform: capitalize;
+
+         gap: 5px;
+         color: #fff;
+      }
+      &:hover{
+         opacity: .8;
+         transition: .2 ease-in-out;
+      }
+   }
+   &_buttons{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+   }
    &_button{
+      cursor: pointer;
       background: #fff;
+      display: flex;
+      align-items: center;
+      gap: 5px ;
       color: #000;
       padding: 12px 18px;
       font-size: 14px;
@@ -130,22 +207,52 @@
       margin-top: 40px;
       border-radius: 8px;
    }
-
+   &_loadedimage{
+      margin: 0 auto;
+      display: flex;
+      margin-top: 40px;
+   }
    &_editor{
       height: 500px;
       background: #fff;
       border-radius: 12px;
+      position: relative;
 
+      &_loader{
+         position: absolute;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%,-50%);
+         z-index: 1;
+         color: #000;
+      }
+   }
+   &_congratulation{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      h2{
+         font-size: 32px;
+         font-weight: 600;
+
+      }
    }
 }
 
 
 .stack{
+   margin: 0 auto;
    margin-top: 150px;
+   max-width: 1400px;
+   position: relative;
 
    &_block{
       padding: 20px;
       border-radius: 16px;
+      display: flex;
+      flex-direction: column;
 
       h2{
          font-weight: 600;
@@ -153,12 +260,21 @@
 
          display: flex;
          flex-direction: column;
-         span{
-            font-size: 12px;
-            font-weight: 200;
-         }
+    
 
-         margin-bottom: 20px;
+         margin-bottom: 5px;
+      }
+      a{
+         margin-bottom: 10px;
+         font-size: 16px;
+         font-weight: 500;
+         color: lightblue;
+      }
+      span{
+         margin-bottom: 10px;
+
+         font-size: 12px;
+         font-weight: 200;
       }
    }
 

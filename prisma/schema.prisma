@@ -18,6 +18,8 @@ model User {
   email     String    @unique
   username  String    @unique
   password  String    @db.Char(60)
+  developer String    @default("Front-End Developer")
+  image     String?
   role      Role      @default(USER)
   createdAt DateTime  @default(now())
   stacks    Stacks[]
