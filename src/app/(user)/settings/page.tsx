@@ -25,10 +25,10 @@ const schema = z.object({
 type SettingsFields = z.infer<typeof schema>
 
 interface SettingsProps {
-   user: any,
+   userData: any,
 }
 
-const Settings = ({ user }: SettingsProps) => {
+const Settings = ({ userData }: SettingsProps) => {
    const {
       register,
       handleSubmit,
@@ -37,7 +37,7 @@ const Settings = ({ user }: SettingsProps) => {
    } = useForm<SettingsFields>({
       resolver: zodResolver(schema)
    })
-   if (user === null) {
+   if (userData === null) {
       redirect('/sign-in')
    }
    const [uploadedLogoUrl, setUploadedLogoUrl] = useState("");
@@ -51,7 +51,7 @@ const Settings = ({ user }: SettingsProps) => {
 
 
    const onSubmit: SubmitHandler<SettingsFields> = async (data) => {
-      if (data.username === user?.username && data.developer === user?.developer && uploadedLogoUrl === "") {
+      if (data.username === userData?.username && data.developer === userData?.developer && uploadedLogoUrl === "") {
          setError('developer', { message: "Didn't change" })
          toast.error("Didn't change anything")
       }
@@ -72,28 +72,28 @@ const Settings = ({ user }: SettingsProps) => {
                      <Image src={uploadedLogoUrl} width={60} height={60} alt='avatar' />
 
                   ) : (
-                     <Image src={user?.image || avatar} width={60} height={60} alt='avatar' />
+                     <Image src={userData?.image || avatar} width={60} height={60} alt='avatar' />
                   )}
-                  <h2>{user?.username}</h2>
-                  <h4>{user?.email}</h4>
-                  <h3>{user?.developer}</h3>
+                  <h2>{userData?.username}</h2>
+                  <h4>{userData?.email}</h4>
+                  <h3>{userData?.developer}</h3>
 
 
                </div>
                <div className={styles.setting_details_block}>
                   <div className={styles.setting_input}>
                      <label htmlFor="username">Your Username</label>
-                     <input {...register('username')} type='text' defaultValue={user?.username || 'username'} name='username' id='username' />
+                     <input {...register('username')} type='text' defaultValue={userData?.username || 'username'} name='username' id='username' />
                      {errors.username && (<span className={styles.new_stack_error}>{errors.username.message}</span>)}
 
                   </div>
                   <div className={styles.setting_input}>
                      <label htmlFor="email">Your Email</label>
-                     <input type='email' defaultValue={user?.email} name='email' disabled id='email' />
+                     <input type='email' defaultValue={userData?.email} name='email' disabled id='email' />
                   </div>
                   <div className={styles.setting_input}>
                      <label htmlFor="username">Your Role</label>
-                     <input {...register('developer')} type='text' defaultValue={user?.developer || "Front-End Developer"} name='developer' id='developer' />
+                     <input {...register('developer')} type='text' defaultValue={userData?.developer || "Front-End Developer"} name='developer' id='developer' />
                      {errors.developer && (<span className={styles.new_stack_error}>{errors.developer.message}</span>)}
 
                   </div>
