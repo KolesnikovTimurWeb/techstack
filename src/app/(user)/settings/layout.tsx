@@ -22,7 +22,7 @@ const layout = async () => {
 
   return (
 
-    <SettingsPage />
+    <SettingsPage userUsername={username} userEmail={user?.email} userDeveloper={user?.developer} userImage={user?.image} />
   )
 }
 
