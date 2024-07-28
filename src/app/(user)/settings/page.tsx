@@ -24,14 +24,14 @@ const schema = z.object({
 
 type SettingsFields = z.infer<typeof schema>
 
-type SettingsPageProps = {
+interface SettingsPageProps {
    userDeveloper: string;
    userUsername: string;
    userEmail: string;
    userImage: string | null;
 };
 
-const SettingsPage: React.FC<SettingsPageProps> = ({ userDeveloper, userUsername, userEmail, userImage }) => {
+const SettingsPage = ({ userDeveloper, userUsername, userEmail, userImage }: SettingsPageProps) => {
    const {
       register,
       handleSubmit,
