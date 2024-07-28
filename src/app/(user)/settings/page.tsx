@@ -5,7 +5,7 @@ import { authOptions } from "@/lib/auth"
 import prisma from "@/lib/prisma"
 import SettingsPage from "@/components/SettingsPage"
 
-const layout = async () => {
+const Settings = async () => {
   const session = await getServerSession(authOptions)
   // @ts-ignore 
   const userSessionId = session?.user.userId
@@ -29,4 +29,4 @@ const layout = async () => {
   )
 }
 
-export default layout
+export default Settings
