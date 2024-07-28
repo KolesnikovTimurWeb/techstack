@@ -18,6 +18,9 @@ const layout = async () => {
       id: userSessionId
     }
   })
+  if (!user) {
+    return null
+  }
   const username = user?.username
 
   return (

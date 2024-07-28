@@ -31,7 +31,7 @@ type SettingsPageProps = {
    userImage: string | null;
 };
 
-export default function SettingsPage({ userDeveloper, userUsername, userEmail, userImage }: SettingsPageProps) {
+const SettingsPage: React.FC<SettingsPageProps> = ({ userDeveloper, userUsername, userEmail, userImage }) => {
    const {
       register,
       handleSubmit,
@@ -122,3 +122,4 @@ export default function SettingsPage({ userDeveloper, userUsername, userEmail, u
    )
 }
 
+export default SettingsPage
