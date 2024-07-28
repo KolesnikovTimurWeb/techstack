@@ -24,14 +24,11 @@ const schema = z.object({
 
 type SettingsFields = z.infer<typeof schema>
 
-interface SettingsProps {
-   userUsername: string,
-   userDeveloper: string,
-   userEmail: string,
-   userImage?: string,
-}
 
-export default function SettingsPage({ userDeveloper, userUsername, userEmail, userImage }: SettingsProps) {
+
+export default function SettingsPage() {
+   const userUsername = ''
+   const userDeveloper = ''
    const {
       register,
       handleSubmit,
@@ -69,54 +66,7 @@ export default function SettingsPage({ userDeveloper, userUsername, userEmail, u
       <div className={styles.setting}>
          <div className="container">
 
-            <form onSubmit={handleSubmit(onSubmit)} className={styles.setting_details}>
-               <div className={styles.setting_avatar}>
-                  {uploadedLogoUrl ? (
-                     <Image src={uploadedLogoUrl} width={60} height={60} alt='avatar' />
 
-                  ) : (
-                     <Image src={userImage || avatar} width={60} height={60} alt='avatar' />
-                  )}
-                  <h2>{userUsername}</h2>
-                  <h4>{userEmail}</h4>
-                  <h3>{userDeveloper}</h3>
-
-
-               </div>
-               <div className={styles.setting_details_block}>
-                  <div className={styles.setting_input}>
-                     <label htmlFor="username">Your Username</label>
-                     <input {...register('username')} type='text' defaultValue={userUsername || 'username'} name='username' id='username' />
-                     {errors.username && (<span className={styles.new_stack_error}>{errors.username.message}</span>)}
-
-                  </div>
-                  <div className={styles.setting_input}>
-                     <label htmlFor="email">Your Email</label>
-                     <input type='email' defaultValue={userEmail} name='email' disabled id='email' />
-                  </div>
-                  <div className={styles.setting_input}>
-                     <label htmlFor="username">Your Role</label>
-                     <input {...register('developer')} type='text' defaultValue={userDeveloper || "Front-End Developer"} name='developer' id='developer' />
-                     {errors.developer && (<span className={styles.new_stack_error}>{errors.developer.message}</span>)}
-
-                  </div>
-
-               </div>
-               {uploadedLogoUrl ? (
-                  <div>
-                  </div>
-               ) : (
-                  <div className={styles.setting_image}>
-                     <h4>Choose your Avatar Image</h4>
-                     <ImageUploadButton
-                        endpoint="profilePicture"
-                        onChange={handleLogoUpload} />
-                  </div>
-               )}
-               <div className={styles.setting_buttons}>
-                  <button disabled={isSubmitting} type='submit'>{isSubmitting && <Spinner />}Submit</button>
-               </div>
-            </form>
          </div>
       </div>
    )

@@ -3,8 +3,7 @@ import { useSession } from "next-auth/react"
 import { getServerSession } from "next-auth"
 import { authOptions } from "@/lib/auth"
 import prisma from "@/lib/prisma"
-import { getUser } from "@/lib/actions"
-import SettingsPage from "./settings/page"
+import SettingsPage from "./page"
 
 const layout = async () => {
   const session = await getServerSession(authOptions)
@@ -19,10 +18,11 @@ const layout = async () => {
       id: userSessionId
     }
   })
+  const username = user?.username
 
   return (
 
-    <SettingsPage userUsername={user?.username} userEmail={user?.email} userDeveloper={user?.developer} userImage={user?.image} />
+    <SettingsPage />
   )
 }
 
