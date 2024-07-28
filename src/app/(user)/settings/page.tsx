@@ -24,8 +24,14 @@ const schema = z.object({
 
 type SettingsFields = z.infer<typeof schema>
 
+type SettingsPageProps = {
+   userDeveloper: string;
+   userUsername: string;
+   userEmail: string;
+   userImage: string | null;
+};
 
-export default function SettingsPage({ userDeveloper, userUsername, userEmail, userImage }: { userDeveloper: any, userUsername: any, userEmail: any, userImage: any }) {
+export default function SettingsPage({ userDeveloper, userUsername, userEmail, userImage }: SettingsPageProps) {
    const {
       register,
       handleSubmit,
