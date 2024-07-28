@@ -3,7 +3,7 @@ import { useSession } from "next-auth/react"
 import { getServerSession } from "next-auth"
 import { authOptions } from "@/lib/auth"
 import prisma from "@/lib/prisma"
-import SettingsPage from "./page"
+import SettingsPage from "@/components/SettingsPage"
 
 const layout = async () => {
   const session = await getServerSession(authOptions)

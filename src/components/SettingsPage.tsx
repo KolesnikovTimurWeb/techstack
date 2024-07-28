@@ -23,7 +23,7 @@ const schema = z.object({
 
 
 type SettingsFields = z.infer<typeof schema>
-// @ts-ignore 
+
 interface SettingsPageProps {
    userDeveloper: string;
    userUsername: string;
