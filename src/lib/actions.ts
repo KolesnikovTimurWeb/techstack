@@ -22,7 +22,19 @@ export const getUser =async()=>{
 
    return user
 }
-
+export const searchProducts = async (query: string) => {
+   const products = await prisma.stacks.findMany({
+     where: {
+       title: {
+         contains: query,
+         mode: "insensitive",
+       },
+     },
+   });
+ 
+   return products;
+ };
+ 
 export const upadteUser =async({username,developer,image}:{username?:any, developer?:any,image?:any })=>{
    const session = await getServerSession(authOptions)
    // @ts-ignore 
@@ -58,6 +70,24 @@ export const createStack =async({title,description,languages,userId, images , we
    })
 
 }
+export const deleteStack =async(id:string)=>{
+   const session = await getServerSession(authOptions)
+// @ts-ignore 
+   const userSessionId = session?.user.userId
+
+   const product = await prisma.stacks.delete({
+      where: {
+         id: id,
+       },
+       include: {
+         comment: true,
+         likes: true,
+       },
+     });
+     return true;
+
+}
+
 export const putLike =async (productId: string)=>{
    const session = await getServerSession(authOptions)
    // @ts-ignore 

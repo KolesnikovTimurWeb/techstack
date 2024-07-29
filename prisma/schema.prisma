@@ -6,11 +6,13 @@
 
 generator client {
   provider = "prisma-client-js"
+  previewFeatures = ["fullTextSearch"]
 }
 
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+  
 }
 
 model User {
@@ -58,7 +60,7 @@ model Comment {
   profilePicture String?
   body           String
   stacksId       String
-  stacks         Stacks   @relation(fields: [stacksId], references: [id])
+  stacks         Stacks   @relation(fields: [stacksId], references: [id],onDelete: Cascade)
   userId         String
   user           User     @relation(fields: [userId], references: [id])
   createdAt      DateTime @default(now())

@@ -27,6 +27,7 @@
     "react-dom": "^18",
     "react-draft-wysiwyg": "^1.15.0",
     "react-hook-form": "^7.52.1",
+    "react-select": "^5.8.0",
     "react-spinners": "^0.14.1",
     "react-toastify": "^10.0.5",
     "sass": "^1.77.8",

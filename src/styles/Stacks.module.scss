@@ -14,8 +14,39 @@
       gap: 20px;
    }
 
-
-
+   &_select{
+      color: #000;
+   }
+   &_cardSkeleton{
+      display: flex;
+      gap: 5px;
+      width: 50px;
+      height: 50px;
+      flex-direction: column;
+      border-radius: 8px;
+      color: #fff;
+      position: relative;  
+   	background-color: #e2e5e7;
+	// The shine that's going to move across the skeleton:
+	      background-image:			
+			linear-gradient(
+				90deg, 
+				rgba(#fff, 0), 
+				rgba(#fff, 0.5),
+				rgba(#fff, 0)
+			);
+	      background-size: 40px 100%; // width of the shine
+	   background-repeat: no-repeat; // No need to repeat the shine effect
+	   background-position: left -40px top 0; // Place shine on the left side, with offset on the left based on the width of the shine - see background-size
+	   animation: shine 1s ease infinite; // increase animation time to see effect in 'slow-mo'
+   }
+   
+@keyframes shine {
+	to {
+		// Move shine from left to right, with offset on the right based on the width of the shine - see background-size
+		background-position: right -40px top 0;
+	}
+}
    &_card{
       display: flex;
       gap: 5px;
@@ -29,15 +60,21 @@
       &_image{
          display: flex;
          align-items: center;
-         margin-top: 20px;
+         margin-top: 5px;
          img{
-            margin-right: -10px;
+            margin-right: -5px;
+            padding: 5px;
+            background: #292929b5;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
          }
       }
       &_text{
+         color: #FFF;
          display: flex;
          align-items: center;
-         gap: 5px;
+         gap: 30px;
          img{
             border-radius: 50%;
          }
@@ -57,11 +94,22 @@
          align-items: center;
          gap: 20px;
          margin-top: 20px;
-         p{
+         color: #fff;
+         span{
+            font-weight: 500;
+         }
+         a,button{
+         color: #fff;
             display: flex;
             align-items: center;
             gap: 5px;
             font-size: 16px;
+            transition: .2s ease-in-out;
+            padding: 4px;
+            border-radius: 4px;
+            &:hover{
+               background: #171717b5;
+            }
          }
       }
 
@@ -75,13 +123,16 @@
    }
 
    &_form{
-      max-width: 400px;
-      padding: 16px;
-      background: #171717b5;
-      border-radius: 8px;
-      
-      display: flex;
-      flex-direction: column;
+      max-width: 350px;
+      width: 100%;
+
+      form{
+         padding: 16px;
+         background: #171717b5;
+         border-radius: 8px;
+         display: flex;
+         flex-direction: column;
+      }
       &_input{
          display: flex;
          gap: 5px;

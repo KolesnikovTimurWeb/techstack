@@ -10,6 +10,7 @@ import ActionStack from '@/components/ActionStack';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import Link from 'next/link';
+import StackCardImage from '@/components/StackCardImage';
 
 const Stack = async ({ params }: { params: any }) => {
   let id = params.id
@@ -25,8 +26,7 @@ const Stack = async ({ params }: { params: any }) => {
       likes: true,
     }
   })
-  const likeBoolian = stack?.likes.findIndex((item) => item.userId === userId)
-
+  const likeBoolean = stack?.likes.findIndex((item) => item.userId === userId)
   const htmlParse = stack?.description
   return (
     <div className={styles.stack}>
@@ -36,11 +36,15 @@ const Stack = async ({ params }: { params: any }) => {
           </h2>
           <Link href={'/'}>google.com</Link>
           <span>{relativeDate(stack?.createdAt as Date)}</span>
-
+          <div>
+            {stack?.languages.map((stack: string, index: number) => (
+              <StackCardImage key={index} image={stack} />
+            ))}
+          </div>
           <div className={styles.stack_parser} >{Parser(htmlParse as any)}</div>
 
           <div className={styles.stack_action}>
-            <ActionStack stackId={id} likes={stack?.likes.length} likeBoolean={likeBoolian === 0 ? true : false} coments={stack?.comment} />
+            <ActionStack stackId={id} likes={stack?.likes.length} likeBoolean={likeBoolean !== -1 ? true : false} coments={stack?.comment} />
           </div>
         </div>
 

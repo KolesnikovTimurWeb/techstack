@@ -32,7 +32,8 @@ const Navbar = () => {
           </div>
           <div className={styles.navbar_navigation}>
             <a href={'/stacks'}>Stacks</a>
-            <Link href={'/stacks'}>Community</Link>
+            <Link href={'/my-stacks'}>My Stacks</Link>
+
             {username && (
               <Menu username={username} email={email} />
 

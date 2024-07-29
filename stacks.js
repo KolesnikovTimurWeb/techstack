@@ -22,7 +22,7 @@ import flutter from './src/assets/stacksIcons/flutter.svg'
 import java from './src/assets/stacksIcons/java.svg'
 import go from './src/assets/stacksIcons/go.svg'
 
-export const stacks = {  
+export const stacksArray = {  
    react:{
       name:'React.js',
       image:react,

@@ -64,6 +64,7 @@ const SettingsPage = ({ userDeveloper, userUsername, userEmail, userImage }: Set
          username: data.username,
          developer: data.developer,
       })
+      toast.success("Successfully updated user information")
    }
    return (
       <div className={styles.setting}>
