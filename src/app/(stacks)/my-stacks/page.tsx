@@ -28,6 +28,7 @@ const myStacks = async () => {
             <div className={styles.myStacks_block}>
                {userStacks.map((item, index) => (
                   <MyStacksCard
+                     key={index}
                      image={item.images}
                      index={index}
                      website={item.website}
