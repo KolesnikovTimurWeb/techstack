@@ -20,14 +20,16 @@ const Navbar = async () => {
   let username = session?.user.username
   // @ts-ignore
   let userId = session?.user.userId
+  let user
   if (!userId) {
-    return
+  } else {
+    user = await prisma.user.findUnique({
+      where: {
+        id: userId
+      }
+    })
   }
-  const user = await prisma.user.findUnique({
-    where: {
-      id: userId
-    }
-  })
+
   const userImage = user?.image
   return (
     <header className={styles.navbar}>
