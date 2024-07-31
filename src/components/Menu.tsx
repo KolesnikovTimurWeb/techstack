@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import styles from "@/styles/Main.module.scss"
 import Link from 'next/link'
 import { signOut, useSession } from 'next-auth/react'
@@ -14,9 +14,28 @@ const Menu = ({ userImage }: MenuProps) => {
 
    const [menu, setMenu] = useState(false)
 
+   const ref = useRef<HTMLInputElement>(null)
+
+   useEffect(() => {
+      const handleClickOutside = (event: any) => {
+         if (ref.current && !ref.current.contains(event.target)) {
+            setMenu(false);
+         }
+      };
+
+      if (menu) {
+         document.addEventListener('mousedown', handleClickOutside);
+      } else {
+         document.removeEventListener('mousedown', handleClickOutside);
+      }
+
+      return () => {
+         document.removeEventListener('mousedown', handleClickOutside);
+      };
+   }, [menu, setMenu]);
 
    return (
-      <div className={styles.navbar_menu}>
+      <div ref={ref} className={styles.navbar_menu}>
          <div onClick={() => setMenu(!menu)} className={styles.navbar_menu_avatar}>
             <Image src={userImage || avatar} alt='avatar' width={40} height={40} />
          </div>
