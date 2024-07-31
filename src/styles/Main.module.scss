@@ -211,7 +211,37 @@
       }
    }
 }
+.footer{
+   margin-top: 150px;
+   border-top: 1px solid #fff;
+   margin-bottom: 50px;
+   &_navigation{
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin: 20px 0;
 
+      a{
+         color: #fff;
+      }
+   }
+   &_logo{
+      margin-top: 50px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      a{
+         color: #fff;
+         font-weight: 500;
+      }
+   }
+   &_right{
+      margin: 20px 0;
+      font-size: 12px;
+      font-weight: 200;
+      padding-bottom: 20px;
+   }
+}
 
 .setting{
    margin-top: 150px;

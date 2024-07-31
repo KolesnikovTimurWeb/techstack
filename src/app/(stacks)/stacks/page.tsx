@@ -149,21 +149,37 @@ function Pagination({
   }
 
   return (
-    <div className="flex justify-between">
-      <Link
-        href={generatePageLink(Number(page) + 1)}
-      >
-        Previous page
-      </Link>
-      <span className="font-semibold">
+    <div className={styles.pagination}>
+      {Number(page) != 1 ? (
+        <Link
+          href={generatePageLink(Number(page) - 1)}
+        >
+          Previous page
+        </Link>
+      ) : (
+        <div>
+
+        </div>
+      )}
+
+
+
+      <span >
         Page {Number(page)} of {totalPages}
       </span>
-      <Link
-        href={generatePageLink(Number(page) + 1)}
+      {Number(page) != totalPages ? (
+        <Link
+          href={generatePageLink(Number(page) + 1)}
 
-      >
-        Next page
-      </Link>
+        >
+          Next page
+        </Link>
+      ) : (
+        <div>
+
+        </div>
+      )}
+
     </div>
   );
 }

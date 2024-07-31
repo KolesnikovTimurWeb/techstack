@@ -200,7 +200,24 @@
    }
 }
 
+.pagination{
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
 
+   a{
+      padding: 12px;
+      border-radius: 8px;
+      background: #fff;
+      color: #000;
+      font-size: 16px;
+      font-weight: 500;
+   }
+   span{
+      font-size: 16px;
+      font-weight: 600;
+   }
+}
 
 .new_stack{
    margin-top: 150px;
