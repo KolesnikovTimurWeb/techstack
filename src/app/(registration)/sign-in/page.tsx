@@ -9,6 +9,7 @@ import { signIn, useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 import { toast } from 'react-toastify'
 import { ClipLoader } from 'react-spinners'
+import Link from 'next/link'
 
 const schema = z.object({
    email: z.string().email(),
@@ -79,6 +80,9 @@ const SignIn = () => {
                   aria-label="Loading Spinner"
                   data-testid="loader"
                />)} Sign In</button>
+
+               <Link href={'/sign-up'}>You don't have account?</Link>
+
             </form>
          </div>
       </div>

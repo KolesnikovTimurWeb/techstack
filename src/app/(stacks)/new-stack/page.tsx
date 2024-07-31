@@ -117,7 +117,7 @@ const NewStack = () => {
             {steps === 1 && (
                <div className={styles.new_stack_block}>
                   <h2>Create Title for your Stack</h2>
-                  <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis perferendis possimus accusamus delectus quibusdam laudantium optio provident qui. Eveniet autem dolorum officia nobis repellat! Nobis, et! Repellat quidem facilis deleniti?</h3>
+                  <h3>Write a unique title for your stack, that's also can describe your stack post and what you did in your project. </h3>
 
                   <div className={styles.new_stack_input}>
 
@@ -131,7 +131,7 @@ const NewStack = () => {
             {steps === 2 && (
                <div className={styles.new_stack_block}>
                   <h2>Write your description</h2>
-                  <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis perferendis possimus accusamus delectus quibusdam laudantium optio provident qui. Eveniet autem dolorum officia nobis repellat! Nobis, et! Repellat quidem facilis deleniti?</h3>
+                  <h3>Describe your project step-by-step. Why did you choose the stack that you used and how hard it was. Describe all your experience with it</h3>
 
                   <div className={styles.new_stack_input}>
 
@@ -165,7 +165,7 @@ const NewStack = () => {
             {steps === 3 && (
                <div className={styles.new_stack_block}>
                   <h2>Choose your Stack</h2>
-                  <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis perferendis possimus accusamus delectus quibusdam laudantium optio provident qui. Eveniet autem dolorum officia nobis repellat! Nobis, et! Repellat quidem facilis deleniti?</h3>
+                  <h3>You can choose the stack that you used in your project.</h3>
                   <div className={styles.new_stack_stacksBlock}>
                      {stackNames.map((item) => {
                         // Check if stacks[item] exists and has an image property
@@ -190,8 +190,8 @@ const NewStack = () => {
             )}
             {steps === 4 && (
                <div className={styles.new_stack_block}>
-                  <h2>Choose your Stack</h2>
-                  <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis perferendis possimus accusamus delectus quibusdam laudantium optio provident qui. Eveniet autem dolorum officia nobis repellat! Nobis, et! Repellat quidem facilis deleniti?</h3>
+                  <h2>Choose your Logo</h2>
+                  <h3>Add your project logo. Then people can see it and find your project in the search</h3>
                   {uploadedLogoUrl ? (
                      <div className={styles.new_stack_images}>
                         {loadedImage ? null : (
@@ -228,7 +228,7 @@ const NewStack = () => {
             {steps === 5 && (
                <div className={styles.new_stack_block}>
                   <h2>Add your website url</h2>
-                  <h3>You can add your main url for your project or github page url</h3>
+                  <h3>You can add your main URL for your project or GitHub page URL</h3>
                   <div className={styles.new_stack_input}>
                      <input type="url" {...register("website")} id='website' name='website' placeholder='google.com' maxLength={60} />
 
@@ -239,7 +239,7 @@ const NewStack = () => {
             )}
             {steps >= 6 && (
                <div className={styles.new_stack_congratulation}>
-                  <h2>🥳Congratulation your stack is created 🥳  </h2>
+                  <h2>🥳Congratulations your stack has been created 🥳  </h2>
                   <Link className={styles.new_stack_button} href={'/my-stacks'}>Go to my stacks</Link>
                </div>
             )}

@@ -124,7 +124,25 @@
    position: fixed;
    width: 100%;
    padding-top: 20px;
-
+   &_mobile{
+      display: none;
+   }
+   @media screen and (max-width:650px) {
+      &_hidden{
+         display: none;
+      }
+      &_mobile{
+         display: block;
+      }
+   }
+   &_signOut{
+      padding: 12px;
+      background: #5d5dff;
+      color: #fff;
+      width: 100%;
+      border-radius: 8px;
+      font-weight: 500;
+   }
    &_menu{
       position: relative;
 
@@ -145,13 +163,12 @@
             font-weight: 200;
          }
 
-         margin-bottom: 20px;
-      }
+      }  
 
       &_block{
          position: absolute;
          left: -200px;
-         background: #171717b5;
+         background: #171717;
          border-radius: 8px;
          margin-top: 20px;
          padding: 10px;
@@ -420,6 +437,25 @@
       grid-template-columns: repeat(auto-fill, minmax(350px,1fr));
       gap: 20px;
       justify-content: space-between;
+   }
+   &_createdStack{
+      background: #002986;
+      height: 200px;
+      border-radius: 8px;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      color: #fff;
+      transition: .2s ease-in-out;
+      h2,img{
+         opacity: .8;
+      }
+      &:hover{
+      background: #02329f;
+         
+      }
    }
    &_card{
       background: #171717b5;

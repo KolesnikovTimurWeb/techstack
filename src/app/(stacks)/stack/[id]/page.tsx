@@ -44,7 +44,7 @@ const Stack = async ({ params }: { params: any }) => {
           <div className={styles.stack_parser} >{Parser(htmlParse as any)}</div>
 
           <div className={styles.stack_action}>
-            <ActionStack stackId={id} likes={stack?.likes.length} likeBoolean={likeBoolean !== -1 ? true : false} coments={stack?.comment} />
+            <ActionStack stackId={id} userId={userId} likes={stack?.likes.length} likeBoolean={likeBoolean !== -1 ? true : false} coments={stack?.comment} />
           </div>
         </div>
 

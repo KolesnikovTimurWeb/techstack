@@ -8,13 +8,16 @@ import avatar from '@/assets/icons/avatar.svg';
 import heart from '@/assets/icons/heart.svg';
 import heartRed from '@/assets/icons/heart-active.svg';
 import Heart from './ui/Heart';
+import { toast } from 'react-toastify';
 
 const ActionStack = ({
   stackId,
   likes,
   coments,
   likeBoolean,
+  userId,
 }: {
+  userId: string,
   stackId: any;
   likes: any;
   coments: any;
@@ -32,6 +35,9 @@ const ActionStack = ({
   ) => {
     event.stopPropagation();
     try {
+      if (!userId) {
+        return toast.error("You should be registered")
+      }
       if (liked === false) {
         setLike(prev => prev + 1)
       } else {
@@ -50,7 +56,13 @@ const ActionStack = ({
   ) => {
     event.stopPropagation();
     try {
+      if (!userId) {
+        return toast.error("You should be registered")
+      }
+      if (commentText.length < 5) return toast.error("Text of comments should be longer")
       await makeComment(id, commentText);
+      setCommentText('')
+      toast.success("Your comment is created")
     } catch (error) {
       console.error('Error upvoting product:', error);
     }

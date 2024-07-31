@@ -1,4 +1,3 @@
-"use client"
 import styles from "@/styles/Main.module.scss"
 import logo from "@/assets/logo.svg"
 import React from 'react'
@@ -11,16 +10,26 @@ import { authOptions } from "@/lib/auth"
 import { getUser } from "@/lib/actions"
 import Menu from "./Menu"
 import { useSession } from "next-auth/react"
+import CustomMotionDiv from "./CustomMotionDiv"
+import prisma from "@/lib/prisma"
 
 
 
-const Navbar = () => {
-  const { data: session } = useSession()
+const Navbar = async () => {
+  const session = await getServerSession(authOptions)
   let username = session?.user.username
-  let email = session?.user.email
+  // @ts-ignore
+  let userId = session?.user.userId
+
+  const user = await prisma.user.findUnique({
+    where: {
+      id: userId
+    }
+  })
+  const userImage = user?.image
   return (
     <header className={styles.navbar}>
-      <motion.div
+      <CustomMotionDiv
         initial={{ scale: 0, y: 80 }}
         transition={{ duration: .2, ease: "easeInOut", }}
         animate={{ scale: 1, y: 0 }}
@@ -31,19 +40,19 @@ const Navbar = () => {
             <Link href={'/'}>TechStach</Link>
           </div>
           <div className={styles.navbar_navigation}>
-            <a href={'/stacks'}>Stacks</a>
-            <Link href={'/my-stacks'}>My Stacks</Link>
+            <a className={styles.navbar_hidden} href={'/stacks'}>Stacks</a>
+            <Link className={styles.navbar_hidden} href={'/my-stacks'}>My Stacks</Link>
 
             {username && (
-              <Menu username={username} email={email} />
+              <Menu userImage={userImage} />
 
             )}
             {!username && (
-              <Button color="white" link="/sing-up" size="sm">Sign Up</Button>
+              <Button color="white" link="/sign-up" size="sm">Sign Up</Button>
             )}
           </div>
         </nav>
-      </motion.div>
+      </CustomMotionDiv>
 
     </header>
 

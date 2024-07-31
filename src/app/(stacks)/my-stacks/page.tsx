@@ -5,11 +5,14 @@ import { redirect } from 'next/navigation'
 import React from 'react'
 import styles from '@/styles/Main.module.scss'
 import MyStacksCard from '@/components/MyStackCard'
+import Image from 'next/image'
+import plusIcon from "@/assets/icons/plus.svg"
+import Link from 'next/link'
 
 const myStacks = async () => {
    const user = await getServerSession(authOptions)
-
-   const userId = user?.user.id
+   // @ts-ignore 
+   const userId = user?.user.userId
    if (!user) {
       redirect('/sign-up')
    }
@@ -26,6 +29,10 @@ const myStacks = async () => {
       <div className={styles.myStacks}>
          <div className="container">
             <div className={styles.myStacks_block}>
+               <Link href={'/new-stack'} className={styles.myStacks_createdStack}>
+                  <Image src={plusIcon} width={50} height={50} alt='plusIcon' />
+                  <h2>Create new stack</h2>
+               </Link>
                {userStacks.map((item, index) => (
                   <MyStacksCard
                      key={index}

@@ -13,15 +13,16 @@ const transformedArray = Object.entries(stacksArray).map(([key, value]) => ({
 }));
 
 const options = [...transformedArray]
-console.log
+
 const StacksFilter = () => {
 
   const onSubmit = () => {
     const searchParams = new URLSearchParams({
-      req: 'string'
+      req: 'string',
+      page: '1'
     });
 
-    redirect(`/?${searchParams.toString()}`)
+    return `/stacks?${URLSearchParams.toString()}`;
 
   }
   return (
