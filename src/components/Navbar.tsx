@@ -20,7 +20,9 @@ const Navbar = async () => {
   let username = session?.user.username
   // @ts-ignore
   let userId = session?.user.userId
-
+  if (!userId) {
+    return
+  }
   const user = await prisma.user.findUnique({
     where: {
       id: userId
