@@ -117,7 +117,7 @@ const NewStack = () => {
             {steps === 1 && (
                <div className={styles.new_stack_block}>
                   <h2>Create Title for your Stack</h2>
-                  <h3>Write a unique title for your stack, that's also can describe your stack post and what you did in your project. </h3>
+                  <h3>Write a unique title for your stack, that&apos;s also can describe your stack post and what you did in your project. </h3>
 
                   <div className={styles.new_stack_input}>
 

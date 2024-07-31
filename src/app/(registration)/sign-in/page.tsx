@@ -81,7 +81,7 @@ const SignIn = () => {
                   data-testid="loader"
                />)} Sign In</button>
 
-               <Link href={'/sign-up'}>You don't have account?</Link>
+               <Link href={'/sign-up'}>You don&apos;t have account?</Link>
 
             </form>
          </div>
