@@ -152,7 +152,7 @@ function Pagination({
     <div className={styles.pagination}>
 
       {totalPages > 1 && (
-        <div>
+        <div className={styles.pagination}>
           {Number(page) != 1 ? (
             <Link
               href={generatePageLink(Number(page) - 1)}

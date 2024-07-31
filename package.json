@@ -21,6 +21,7 @@
     "html-react-parser": "^5.1.12",
     "next": "14.2.5",
     "next-auth": "^4.24.7",
+    "next13-progressbar": "^1.2.1",
     "prettier": "^3.3.3",
     "prisma": "^5.17.0",
     "react": "^18",

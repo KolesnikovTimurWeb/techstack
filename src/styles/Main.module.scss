@@ -364,6 +364,17 @@
          font-size: 16px;
          font-weight: 400;
       }
+      @media screen and (max-width:650px) {
+         h2{
+            font-size: 20px;
+         }
+         h3{
+            font-size: 12px;
+         }
+         h4{
+            font-size: 14px;
+         }
+      }
    }
    &_details{
       padding: 20px;
@@ -473,7 +484,15 @@
          font-size: 16px;
          font-weight: 400;
       }
+      @media screen and (max-width:650px) {
 
+         h2{
+            font-size:20px;
+         }
+         p{
+            font-size: 14px;
+         }
+      }
       &_cancel{
          padding:12px 16px;
          background: red;
@@ -506,7 +525,9 @@
       &_block{
          background: #fff;
          padding: 20px;
- 
+         @media screen and (max-width:650px) {
+            max-width: 80%;
+         }
          border-radius: 8px;
          color: 000;
 
@@ -523,11 +544,17 @@
       align-items: center;
       justify-content: center;
    }
+
    &_block{
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(350px,1fr));
       gap: 20px;
       justify-content: space-between;
+   }
+   @media screen and (max-width:650px) {
+      &_block{
+         grid-template-columns: repeat(auto-fill, minmax(300px,1fr));
+      }
    }
    &_createdStack{
       background: #002986;
