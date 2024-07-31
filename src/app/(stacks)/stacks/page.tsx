@@ -150,36 +150,41 @@ function Pagination({
 
   return (
     <div className={styles.pagination}>
-      {Number(page) != 1 ? (
-        <Link
-          href={generatePageLink(Number(page) - 1)}
-        >
-          Previous page
-        </Link>
-      ) : (
+
+      {totalPages > 1 && (
         <div>
+          {Number(page) != 1 ? (
+            <Link
+              href={generatePageLink(Number(page) - 1)}
+            >
+              Previous page
+            </Link>
+          ) : (
+            <div>
 
+            </div>
+          )}
+
+
+
+          <span >
+            Page {Number(page)} of {totalPages}
+          </span>
+          {Number(page) != totalPages ? (
+            <Link
+              href={generatePageLink(Number(page) + 1)}
+
+            >
+              Next page
+            </Link>
+          ) : (
+            <div>
+
+            </div>
+          )}
         </div>
+
       )}
-
-
-
-      <span >
-        Page {Number(page)} of {totalPages}
-      </span>
-      {Number(page) != totalPages ? (
-        <Link
-          href={generatePageLink(Number(page) + 1)}
-
-        >
-          Next page
-        </Link>
-      ) : (
-        <div>
-
-        </div>
-      )}
-
     </div>
   );
 }

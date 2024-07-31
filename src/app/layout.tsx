@@ -31,7 +31,7 @@ export default async function RootLayout({
           <Footer />
         </Provider>
 
-        <ToastContainer />
+        <ToastContainer position="top-center" autoClose={1000} />
 
       </body>
 
