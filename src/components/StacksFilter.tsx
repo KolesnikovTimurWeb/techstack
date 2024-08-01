@@ -21,7 +21,7 @@ interface PageProps {
 
 const StacksFilter = ({ req, select }: PageProps) => {
   const [inputValue, setInputValue] = useState(req)
-  const [select2, setSelect2] = useState([])
+  const [select2, setSelect2] = useState({})
   const router = useRouter()
   console.log(select)
   const [selectValueDefault, setSelectValueDefault] = useState(select?.split(',') || '')
