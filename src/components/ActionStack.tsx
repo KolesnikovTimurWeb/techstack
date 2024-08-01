@@ -1,7 +1,7 @@
 'use client';
 
 import { makeComment, putLike } from '@/lib/actions';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from '@/styles/Main.module.scss';
 import Image from 'next/image';
 import avatar from '@/assets/icons/avatar.svg';
@@ -9,27 +9,36 @@ import heart from '@/assets/icons/heart.svg';
 import heartRed from '@/assets/icons/heart-active.svg';
 import Heart from './ui/Heart';
 import { toast } from 'react-toastify';
+import prisma from '@/lib/prisma';
 
 const ActionStack = ({
   stackId,
   likes,
   coments,
+  username,
   likeBoolean,
   userId,
+  userImage,
 }: {
   userId: string,
+  username: any,
   stackId: any;
   likes: any;
   coments: any;
   likeBoolean: true | false,
+  userImage: any
 }) => {
   const [like, setLike] = useState<number>(likes || 0);
   const [liked, setLiked] = useState(likeBoolean);
   const [commentText, setCommentText] = useState('');
+  const [comment, setComment] = useState([]);
+  const [loading, setLoading] = useState(false);
   const handleCommentChange = (event: any) => {
     setCommentText(event.target.value);
   };
   const id = stackId;
+
+
   const handleLike = async (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => {
@@ -60,14 +69,18 @@ const ActionStack = ({
         return toast.error("You should be registered")
       }
       if (commentText.length < 5) return toast.error("Text of comments should be longer")
+
+      setLoading(true)
       await makeComment(id, commentText);
+      //@ts-ignore
+      setComment([...comment, commentText])
+      setLoading(false)
       setCommentText('')
       toast.success("Your comment is created")
     } catch (error) {
       console.error('Error upvoting product:', error);
     }
   };
-
   return (
     <div className={styles.actionstack}>
       <div className={styles.actionstack_like}>
@@ -82,10 +95,16 @@ const ActionStack = ({
           value={commentText}
           onChange={handleCommentChange}
         />
-        <button onClick={hadnleAddComment}>Submit</button>
+        <button onClick={hadnleAddComment} disabled={loading}>Submit</button>
       </div>
 
       <div>
+        {comment.map((item: any) => (
+          <div className={styles.actionstack_comment} key={item.id}>
+            <Image src={userImage || avatar} width={24} height={24} alt='avatar' />
+            <p>{item}</p>
+          </div>
+        ))}
         {coments.map((item: any) => (
           <div className={styles.actionstack_comment} key={item.id}>
             <Image src={item.profilePicture || avatar} width={24} height={24} alt='avatar' />

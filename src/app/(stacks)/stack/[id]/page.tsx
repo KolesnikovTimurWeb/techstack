@@ -17,7 +17,7 @@ const Stack = async ({ params }: { params: any }) => {
   const user = await getServerSession(authOptions)
   // @ts-ignore 
   const userId = user?.user.userId
-  const stack = await prisma.stacks.findUnique({
+  let stack = await prisma.stacks.findUnique({
     where: {
       id
     },
@@ -26,6 +26,18 @@ const Stack = async ({ params }: { params: any }) => {
       likes: true,
     }
   })
+  let userImg
+  if (!userId) {
+
+  } else {
+
+    userImg = await prisma.user.findUnique({
+      where: {
+        id: userId
+      },
+    })
+  }
+
   const likeBoolean = stack?.likes.findIndex((item) => item.userId === userId)
   const htmlParse = stack?.description
   return (
@@ -44,7 +56,7 @@ const Stack = async ({ params }: { params: any }) => {
           <div className={styles.stack_parser} >{Parser(htmlParse as any)}</div>
 
           <div className={styles.stack_action}>
-            <ActionStack stackId={id} userId={userId} likes={stack?.likes.length} likeBoolean={likeBoolean !== -1 ? true : false} coments={stack?.comment} />
+            <ActionStack userImage={userImg?.image} username={userImg?.username} stackId={id} userId={userId} likes={stack?.likes.length} likeBoolean={likeBoolean !== -1 ? true : false} coments={stack?.comment.reverse()} />
           </div>
         </div>
 

@@ -8,6 +8,7 @@ import { authOptions } from '@/lib/auth'
 import { stacksArray } from '../../../../stacks'
 import { Prisma } from "@prisma/client";
 import Link from 'next/link'
+import Pagination from '@/components/Pagination'
 interface PageProps {
   searchParams: {
     q?: string;
@@ -39,7 +40,7 @@ const Stacks = async ({
     }
     : {};
   const stackNames = [...Object.keys(stacksArray)]
-  const selectedLanguages = Array.isArray(select) ? select : stackNames;
+  const selectedLanguages = select ? select?.split(',') : stackNames;
   const stacksPerPage = 6;
   // @ts-ignore
   const skip = (page - 1) * stacksPerPage;
@@ -113,7 +114,7 @@ const Stacks = async ({
             />
           </div>
           <div className={styles.stacks_form}>
-            <StacksFilter />
+            <StacksFilter req={req} select={select} />
           </div>
 
         </div>
@@ -124,67 +125,3 @@ const Stacks = async ({
 
 export default Stacks
 
-interface PaginationProps {
-  totalPages: number;
-  req?: string;
-  select?: string;
-  page?: Number,
-}
-
-function Pagination({
-  totalPages,
-  req,
-  select,
-  page,
-}: PaginationProps) {
-  function generatePageLink(page: number) {
-    const searchParamsUrl = new URLSearchParams({
-      req: `${req || ''}`,
-      select: `${select || ''}`,
-      page: `${page}`,
-
-    });
-
-    return `/stacks?${searchParamsUrl.toString()}`;
-  }
-
-  return (
-    <div className={styles.pagination}>
-
-      {totalPages > 1 && (
-        <div className={styles.pagination}>
-          {Number(page) != 1 ? (
-            <Link
-              href={generatePageLink(Number(page) - 1)}
-            >
-              Previous page
-            </Link>
-          ) : (
-            <div>
-
-            </div>
-          )}
-
-
-
-          <span >
-            Page {Number(page)} of {totalPages}
-          </span>
-          {Number(page) != totalPages ? (
-            <Link
-              href={generatePageLink(Number(page) + 1)}
-
-            >
-              Next page
-            </Link>
-          ) : (
-            <div>
-
-            </div>
-          )}
-        </div>
-
-      )}
-    </div>
-  );
-}
