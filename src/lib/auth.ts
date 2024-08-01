@@ -6,6 +6,7 @@ import prisma from "./prisma";
 import { compare } from "bcrypt"
 
 export const authOptions: NextAuthOptions = {
+// @ts-ignore
    adapter:PrismaAdapter(prisma),
    secret:process.env.PRISMA_PASSWORD,
    session:{
