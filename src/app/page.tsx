@@ -5,11 +5,19 @@ import MainEmojiMotion from "@/components/MainEmojiMotion";
 import MainEmoji1 from "@/assets/MainEmoji1.png";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
-
+import photo1 from "@/assets/Screenshot_11.png"
+import macbookImage from "@/assets/MacBook Pro.webp"
+import globueImage from "@/assets/globeImage.webp"
+import technologistImage from "@/assets/technologistImage.webp"
+import starImage from '@/assets/starImage.webp'
+import mechanikImage from '@/assets/mechanikImage.webp'
+import artictImage from '@/assets/artistImage.webp'
 
 
 export default async function Home() {
   const session = await getServerSession(authOptions)
+
+
   return (
     <main className={styles.page}>
       {/* MAIN */}
@@ -29,12 +37,12 @@ export default async function Home() {
             </div>
             <div className={styles.main_bg_circle}>
               <MainEmojiMotion index={2} left={92} top={70} image={MainEmoji1} />
-
             </div>
+
             <div className={styles.main_bg_circle}>
               <MainEmojiMotion index={3} left={92} top={25} image={MainEmoji1} />
-
             </div>
+
           </div>
         </div>
 
@@ -51,19 +59,31 @@ export default async function Home() {
             <div className={styles.find_splite_block}>
               <div className={styles.find_card}>
                 <h4>Find your favorite stack</h4>
+                <div className={styles.find_card_favorite}>
+                  <Image src={technologistImage} width={150} height={150} alt="photo" />
+                  <Image src={artictImage} className={styles.find_card_favorite_artict} width={125} height={125} alt="photo" />
+                  <Image src={mechanikImage} className={styles.find_card_favorite_mechanik} width={125} height={125} alt="photo" />
+                </div>
+
               </div>
               <div className={styles.find_card}>
-                <h4>Rewiev your expirence with the project</h4>
+                <h4>You can find your favorite stack and review it</h4>
+                <p>A lot of stacks you can find on our website.That's helped you as thanks you can write a comment or put a like</p>
+                <Image src={starImage} className={styles.find_card_star} width={50} height={50} alt="photo" />
 
               </div>
             </div>
             <div className={styles.find_sized_block}>
               <div className={styles.find_card}>
-                <h4>Share your personal projects and stacks</h4>
+                <h4>Share your personal projects and stacks with <span>TechStack</span></h4>
+                <div className={styles.find_card_images}>
+                  <Image src={macbookImage} width={500} height={400} alt="photo" />
 
+                </div>
               </div>
               <div className={styles.find_card}>
                 <h4>Get people on your project</h4>
+                <Image src={globueImage} className={styles.find_card_globe} width={200} height={200} alt="photo" />
 
               </div>
             </div>

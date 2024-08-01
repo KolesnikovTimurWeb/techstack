@@ -41,7 +41,7 @@ const SignIn = () => {
       const signInData = await signIn('credentials', {
          email: data.email,
          password: data.password,
-         redirect: false
+         redirect: true
       })
       if (signInData?.status === 401) {
          setError('password', { message: "Wrong password" })
@@ -49,8 +49,6 @@ const SignIn = () => {
       if (signInData?.error) {
          console.log(signInData.error)
       } else {
-         router.push('/')
-         toast.success("You are succesfully logged In")
       }
    }
 

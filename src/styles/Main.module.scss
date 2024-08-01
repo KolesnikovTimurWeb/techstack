@@ -47,6 +47,7 @@
       width: 100%;
       z-index: -1;
       &_circle{
+       
          position: absolute;
          left: 50%;
          transform: translateX(-50%);
@@ -159,12 +160,49 @@
    }
    &_card{
       padding: 20px;
+      display: flex;
+      flex-direction: column;
       border: 1px solid #ffffff14;
       background: #171717b5;
-      height: 200px;
+      min-height: 200px;
       border-radius: 14px;
-      
+
+   
+      &_images{
+         display: flex;
+         gap: 5px;
+         margin-top: 20px;
+         justify-content: space-evenly;
+      }
+      &_favorite{
+         position: relative;
+         margin: 0 auto;
+         z-index: 1;
+         &_artict{
+            opacity: .75;
+            position: absolute;
+            z-index: -1;
+
+            top: 0;
+            right: -80px;
+         }
+         &_mechanik{
+            position: absolute;
+            z-index: -1;
+            opacity: .65;
+            left: -80px;
+            top: 0;
+         }
+      }
+      &_star{
+         margin-left: auto;
+         margin-top: auto;
+      }
+      &_globe{
+         margin: auto;
+      }
       h4{
+         margin-bottom: 10px;
          font-size: 24px;
          font-weight: 400;
       }
