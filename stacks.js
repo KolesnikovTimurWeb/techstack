@@ -21,12 +21,18 @@ import kotlin from './src/assets/stacksIcons/kotlin.svg'
 import flutter from './src/assets/stacksIcons/flutter.svg'
 import java from './src/assets/stacksIcons/java.svg'
 import go from './src/assets/stacksIcons/go.svg'
+import clerk from './src/assets/stacksIcons/clerk.svg'
+import stripe from './src/assets/stacksIcons/stripe.svg'
+import supabase from './src/assets/stacksIcons/supabase.svg'
+
+
 
 export const stacksArray = {  
    react:{
       name:'React.js',
       image:react,
    },
+
    next:{
       name:'Next.js',
       image:next,
@@ -114,5 +120,17 @@ export const stacksArray = {
    go:{
       name:'go',
       image:go,
+   },
+   clerk:{
+      name:'Clerk',
+      image:clerk,
+   },
+   stripe:{
+      name:'stripe',
+      image:stripe,
+   },
+   supabase:{
+      name:'supabase',
+      image:supabase,
    },
 }

@@ -64,7 +64,7 @@ const Stacks = async ({
       likes: true,
 
     },
-
+    cacheStrategy: { ttl: 60 }
 
   })
 
@@ -124,4 +124,3 @@ const Stacks = async ({
 }
 
 export default Stacks
-

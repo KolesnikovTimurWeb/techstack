@@ -1,11 +1,15 @@
 .editor{
    background: #fff;
-   color: #000;
-   height: 500px;
+   color: #000 !important;
+   min-height: 500px;
    padding: 12px;
    border-radius: 12px;
    position: relative;
    z-index: 2;
+   p,h3,h4,h5,span{
+   color: #000 !important;
+   
+   }
 }
 
 .dropzone{

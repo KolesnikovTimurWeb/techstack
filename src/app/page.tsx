@@ -60,9 +60,9 @@ export default async function Home() {
               <div className={styles.find_card}>
                 <h4>Find your favorite stack</h4>
                 <div className={styles.find_card_favorite}>
-                  <Image src={technologistImage} width={150} height={150} alt="photo" />
-                  <Image src={artictImage} className={styles.find_card_favorite_artict} width={125} height={125} alt="photo" />
-                  <Image src={mechanikImage} className={styles.find_card_favorite_mechanik} width={125} height={125} alt="photo" />
+                  <Image src={technologistImage} width={125} height={125} alt="photo" />
+                  <Image src={artictImage} className={styles.find_card_favorite_artict} width={100} height={100} alt="photo" />
+                  <Image src={mechanikImage} className={styles.find_card_favorite_mechanik} width={100} height={100} alt="photo" />
                 </div>
 
               </div>
@@ -83,7 +83,7 @@ export default async function Home() {
               </div>
               <div className={styles.find_card}>
                 <h4>Get people on your project</h4>
-                <Image src={globueImage} className={styles.find_card_globe} width={200} height={200} alt="photo" />
+                <Image src={globueImage} className={styles.find_card_globe} width={150} height={150} alt="photo" />
 
               </div>
             </div>

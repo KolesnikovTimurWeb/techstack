@@ -6,8 +6,10 @@
       flex-direction: column;
       gap: 20px;
       width: 100%;
-   }
 
+
+   }
+ 
    &_block{
       display: flex;
       justify-content: space-between;
@@ -329,7 +331,8 @@
       margin-top: 40px;
    }
    &_editor{
-      height: 500px;
+      min-height: 500px;
+      color: #000 !important;
       background: #fff;
       border-radius: 12px;
       position: relative;
@@ -369,7 +372,9 @@
       border-radius: 16px;
       display: flex;
       flex-direction: column;
-
+      @media screen and (max-width:650px) {
+         padding: 0;
+      }
       h2{
          font-weight: 600;
          font-size: 36px;
@@ -395,9 +400,12 @@
    }
 
    &_parser{
+
       padding: 16px;
       border-radius: 16px;
-
+      @media screen and (max-width:650px) {
+         padding: 4px;
+      }
       ul{
       margin-left: 20px;
 
@@ -409,6 +417,6 @@
 
 .editor{
    background: #fff;
-   color: #000;
-   height: 500px;
+   color: #000 !important;
+   min-height: 500px;
 }

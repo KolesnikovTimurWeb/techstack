@@ -16,11 +16,11 @@ import "@/styles/Editor.scss"
 
 
 
-const WYSIWYGEditor = ({ onChange, value }:{onChange:any, value:any}) => {
+const WYSIWYGEditor = ({ onChange, value }: { onChange: any, value: any }) => {
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
   const [updated, setUpdated] = useState(false);
 
-  
+
   useEffect(() => {
     if (!updated) {
       const defaultValue = value ? value : "";
@@ -34,7 +34,7 @@ const WYSIWYGEditor = ({ onChange, value }:{onChange:any, value:any}) => {
     }
   }, [value]);
 
-  const onEditorStateChange = (editorState:any) => {
+  const onEditorStateChange = (editorState: any) => {
     setUpdated(true);
     setEditorState(editorState);
 
@@ -43,12 +43,13 @@ const WYSIWYGEditor = ({ onChange, value }:{onChange:any, value:any}) => {
 
 
   return (
-      <div className="editor">
-        <Editor
-          editorState={editorState}
-          onEditorStateChange={onEditorStateChange}
-        />
-      </div>
+    <div className="editor">
+      <Editor
+        color={'#000'}
+        editorState={editorState}
+        onEditorStateChange={onEditorStateChange}
+      />
+    </div>
   );
 };
 
