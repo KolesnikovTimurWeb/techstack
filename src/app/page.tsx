@@ -68,7 +68,7 @@ export default async function Home() {
               </div>
               <div className={styles.find_card}>
                 <h4>You can find your favorite stack and review it</h4>
-                <p>A lot of stacks you can find on our website.That's helped you as thanks you can write a comment or put a like</p>
+                <p>A lot of stacks you can find on our website.That&apos;s helped you as thanks you can write a comment or put a like</p>
                 <Image src={starImage} className={styles.find_card_star} width={50} height={50} alt="photo" />
 
               </div>
