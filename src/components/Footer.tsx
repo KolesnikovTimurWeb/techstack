@@ -9,7 +9,7 @@ const Footer = () => {
       <div className={styles.footer}>
          <div className="container">
             <div className={styles.footer_logo}>
-               <Image src={logo} alt="logo" width={40} height={40} />
+               <Image src={logo} alt="logo" width={30} height={30} />
                <Link href={'/'}>TechStach</Link>
             </div>
             <div className={styles.footer_navigation}>

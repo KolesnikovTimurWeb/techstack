@@ -40,7 +40,7 @@ const Navbar = async () => {
       >
         <nav className="container" style={{ display: "flex" }}>
           <div className={styles.navbar_logo}>
-            <Image src={logo} alt="logo" width={40} height={40} />
+            <Image src={logo} alt="logo" width={30} height={30} />
             <Link href={'/'}>TechStach</Link>
           </div>
           <div className={styles.navbar_navigation}>
