@@ -127,6 +127,7 @@ export const makeComment =async (productId: string , commentText:string)=>{
     await prisma.comment.create({
       data:{
          userId:userSessionId,
+         username:userPicture?.username,
          profilePicture:userPicture?.image,
          stacksId:productId,
          body:commentText,

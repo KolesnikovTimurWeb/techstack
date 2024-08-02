@@ -61,6 +61,7 @@ model Comment {
   profilePicture String?
   body           String
   stacksId       String
+  username       String?
   stacks         Stacks   @relation(fields: [stacksId], references: [id],onDelete: Cascade)
   userId         String
   user           User     @relation(fields: [userId], references: [id])

@@ -102,13 +102,19 @@ const ActionStack = ({
         {comment.map((item: any) => (
           <div className={styles.actionstack_comment} key={item.id}>
             <Image src={userImage || avatar} width={24} height={24} alt='avatar' />
-            <p>{item}</p>
+            <div className={styles.actionstack_comment_avatar}>
+              <h2>{username}</h2>
+              <p>{item}</p>
+            </div>
           </div>
         ))}
         {coments.map((item: any) => (
           <div className={styles.actionstack_comment} key={item.id}>
             <Image src={item.profilePicture || avatar} width={24} height={24} alt='avatar' />
-            <p>{item.body}</p>
+            <div className={styles.actionstack_comment_avatar}>
+              <h2>{item?.username}</h2>
+              <p>{item.body}</p>
+            </div>
           </div>
         ))}
       </div>

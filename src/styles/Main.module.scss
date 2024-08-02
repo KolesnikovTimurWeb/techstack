@@ -77,7 +77,7 @@
       &_text{
 
          h1{
-            font-size: 38px;
+            font-size: 32px;
             line-height: 36px;
    
          }
@@ -461,15 +461,7 @@
 .actionstack{
    display: flex;
    flex-direction: column;
-   &_comment{
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      margin-bottom: 10px; 
-      p{
-         font-size: 16px;
-      }
-   }
+
    &_like{
       position: absolute;
  
@@ -518,6 +510,27 @@
    @media screen and (max-width:650px) {
       h2{
          font-size: 24px !important;
+      }
+   }
+
+   &_comment{
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-bottom: 10px; 
+      p{
+         font-size: 16px;
+      }
+      &_avatar{
+         display: flex;
+         flex-direction: column;
+
+         h2{
+            font-size: 11px !important;
+            opacity: .8;
+            font-weight: 200;
+            margin: 0 !important;
+         }
       }
    }
 }
