@@ -44,7 +44,7 @@ const Menu = ({ userImage }: MenuProps) => {
                <div className={styles.navbar_menu_user}>
                   <Image src={userImage || avatar} width={40} height={40} alt='user Image' />
                </div>
-               <a className={styles.navbar_hidden} href={'/stacks'}>Stacks</a>
+               <a className={styles.navbar_hidden} href={'/stacks'}>All Stacks</a>
                <Link className={styles.navbar_hidden} href={'/my-stacks'}>My Stacks</Link>
                <Link href={'/new-stack'}>
                   Create new Stack

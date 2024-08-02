@@ -44,7 +44,7 @@ const Navbar = async () => {
             <Link href={'/'}>TechStach</Link>
           </div>
           <div className={styles.navbar_navigation}>
-            <a className={styles.navbar_hidden} href={'/stacks'}>Stacks</a>
+            <a className={styles.navbar_hidden} href={'/stacks'}>All Stacks</a>
             <Link className={styles.navbar_hidden} href={'/my-stacks'}>My Stacks</Link>
 
             {username && (

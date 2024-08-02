@@ -57,7 +57,9 @@ const Stacks = async ({
           }
         },
       ],
+      published: true,
     },
+
     orderBy: { createdAt: "desc" },
     include: {
       comment: true,
@@ -78,6 +80,7 @@ const Stacks = async ({
           }
         },
       ],
+
     },
     orderBy: { createdAt: "desc" },
   });

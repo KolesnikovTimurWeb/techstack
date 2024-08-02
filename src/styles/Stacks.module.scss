@@ -29,7 +29,7 @@
    &_cardSkeleton{
       display: flex;
       gap: 5px;
-      width: 50px;
+      width: 60px;
       height: 50px;
       flex-direction: column;
       border-radius: 8px;
@@ -65,7 +65,10 @@
       border-radius: 8px;
       color: #fff;
       position: relative;
-   
+      @media screen and (max-width:650px) {
+        padding: 12px;
+         
+      }
       &_image{
          display: flex;
          align-items: center;
@@ -256,7 +259,17 @@
          font-weight: 500;
          margin: 10px 0;
       }
-
+      @media screen and (max-width:650px) {
+         h2{
+            font-size: 24px;
+         }
+         h3{
+            font-size: 16px;
+         }
+         label{
+            font-size: 16px;
+         }
+      }
       input{
          background: #171717b5;
          padding: 16px;
@@ -368,6 +381,7 @@
    position: relative;
 
    &_block{
+   
       padding: 20px;
       border-radius: 16px;
       display: flex;
@@ -385,11 +399,21 @@
 
          margin-bottom: 5px;
       }
+      @media screen and (max-width:650px) {
+         h2{
+            font-size: 24px;
+         }
+      }
       a{
          margin-bottom: 10px;
          font-size: 16px;
          font-weight: 500;
          color: lightblue;
+      }
+      @media screen and (max-width:650px) {
+         a{
+            font-size: 14px;
+         }
       }
       span{
          margin-bottom: 10px;
@@ -411,6 +435,26 @@
 
          list-style: initial;
       }
+   }
+
+   &_link{
+
+      padding: 20px 20px 20px 0;
+      position: absolute;
+      top: -50px;
+      display: flex;
+      align-items: center;
+      span{
+         font-weight: 500;
+         font-size: 16px;
+         margin: 0;
+         color: #fff;
+      }
+      @media screen and (max-width:650px) {
+       top: -60px;
+         
+      }
+
    }
 }
 

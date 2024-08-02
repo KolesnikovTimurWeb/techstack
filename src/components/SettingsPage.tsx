@@ -16,7 +16,7 @@ import avatar from '@/assets/icons/avatar.svg'
 
 
 const schema = z.object({
-   username: z.string().max(60).min(10),
+   username: z.string().max(60).min(4),
    developer: z.string().max(120).min(10)
 
 })

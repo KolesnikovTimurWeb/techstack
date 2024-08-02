@@ -24,10 +24,13 @@ export default async function Home() {
       <section className={styles.main}>
         <div className="container">
           <div className={styles.main_text}>
-            <h1>Where the joy of learn meets the power of community</h1>
-            <h4>Dive deep in immersive, interactive small groups. Expand horizons, engage in discussions, and elevate your learning journey with us.</h4>
+            <h1>Find your Stack that will work for you</h1>
+            <h4>Dive deep into the other people&apos;s stacks and figure out what is the best for you.And all knowledge use inside your own application</h4>
             {!session?.user.username && (
               <Button link="/sign-up" size="sm" color="white">Sign Up</Button>
+            )}
+            {session?.user.username && (
+              <Button link="/new-stack" size="sm" color="white">Create Stack</Button>
             )}
           </div>
 

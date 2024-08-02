@@ -13,7 +13,7 @@ const Footer = () => {
                <Link href={'/'}>TechStach</Link>
             </div>
             <div className={styles.footer_navigation}>
-               <a href='/stacks'>Stacks</a>
+               <a href='/stacks'>All Stacks</a>
                <Link href='/my-stacks'>My Stacks</Link>
                <Link href='/settings'>Settings</Link>
             </div>

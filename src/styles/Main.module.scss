@@ -78,7 +78,7 @@
 
          h1{
             font-size: 38px;
-            line-height: 30px;
+            line-height: 36px;
    
          }
          h4{
@@ -241,7 +241,11 @@
       &_avatar{
          width: 35px;
          height: 35px;
+         border-radius: 50%;
+         img{
+         border-radius: 50%;
 
+         }
          cursor: pointer;
       }
 
@@ -468,11 +472,18 @@
    }
    &_like{
       position: absolute;
+ 
       top: 20px;
       right: 50px;
       display: flex;
       align-items: center;
       gap: 0px;
+      @media screen and (max-width:650px) {
+         position: relative;
+         margin-left: auto;
+         right: 10px;
+         top: 0;
+      }
       p{
          margin-left: -10px;
          font-size: 24px;
@@ -700,6 +711,11 @@
             font-size: 20px;
             font-weight: 500;
             word-break: break-word;
+         }
+         @media screen and (max-width:650px) {
+            h2{
+               font-size: 16px;
+            }
          }
          a{
             color: #fff;
