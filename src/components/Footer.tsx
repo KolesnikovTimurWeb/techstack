@@ -18,7 +18,7 @@ const Footer = () => {
                <Link href='/settings'>Settings</Link>
             </div>
             <div className={styles.footer_rights}>
-               © 2024 Flow Jobs, Inc. All rights reserved.
+               © 2024 TechStack, Inc. All rights reserved.
             </div>
          </div>
       </div>
